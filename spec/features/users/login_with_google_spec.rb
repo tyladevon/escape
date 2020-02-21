@@ -20,6 +20,11 @@ RSpec.describe 'As a visitor' do
 
       expect(current_path).to eq('/profile')
       expect(page).to have_content("Hello, #{user.first_name}!")
+
+      within "nav" do
+        expect(page).to have_content("Hi, #{user.first_name}")
+      end
+
     end
 
     it 'I can login as a returning user with Google Oauth' do
@@ -40,6 +45,10 @@ RSpec.describe 'As a visitor' do
       expect(page).to have_content("Hello, #{user.first_name}")
 
       expect(User.count).to eq(1)
+
+      within "nav" do
+        expect(page).to have_content("Hi, #{user.first_name}")
+      end
     end
   end
 
