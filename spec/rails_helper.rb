@@ -9,7 +9,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'capybara/rails'
-require 'factory_bot'
+require 'support/factory_bot'
 require 'simplecov'
 SimpleCov.start
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -100,4 +100,18 @@ Shoulda::Matchers.configure do |config|
     with.test_framework :rspec
     with.library :rails
   end
+end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    :provider => 'google_oauth2',
+    :info =>   {"name"=>"Alison Minton",
+                "email"=>"alison.minton@gmail.com",
+                "first_name"=>"Alison",
+                "last_name"=>"Minton",
+                "image"=>"https://lh3.googleusercontent.com/a-/AAuE7mCBgq8kmZ4WnKkIrlNB5osGhDM8rkQxeh14ZxoxgA"},
+    :credentials => {token: ENV['GOOGLE_TOKEN_ALI']}
+    })
 end
