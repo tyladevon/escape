@@ -1,25 +1,19 @@
 language: ruby
-
 rvm:
-  - 2.6.3
-
+- 2.6.3
 script:
-  - bin/rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
-
+- bin/rails db:migrate RAILS_ENV=test
+- bundle exec rspec
 services:
 - postgresql
-
 before_install: gem install bundler -v 2.0.2
-
 before_script:
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres
-
 deploy:
   provider: heroku
   api_key:
-    secure: vmr2fxslW58YLJH9NcUYsQ7VOGYPATNylO1sVFVliWgFcWwS8QqKBlvBhiSTWD/Fmv2Gm/+1vBafQFwth1O8qAVhCJsNU7rVM4G/2tm/EcSRPt3MkG9wy838STaKYeVmWz2fwWQuNNPaHa9SeUHn371jzZno6oCWN8iNRr6nf2fLxEauZzYd4Iie+evKlwxXyvq8GEgostzp3IDfD0q4vhxSdZQZwbSO93XBzMBoCHQiJWf5RyHecJ+nkw2pMFw1NTsez5feg2OXG0jugjtDxc+NqO8ggFMi7AXK0N1xSRo8YKZdhn59nOwX/f044m8RdldTuvleKyrMahBl5zm56ifT46uWNmTw1LGpwP8oLJosTMFBVyszyc0t9L1UNggWGyvp5ZuyjD1rqms5DYLv9Vot9epSnaR/08BJkFufY8PerB9Axj1D0gAErPWfaoB3qmbjHbz5WON5mOY/Xi6gg8BXgpHq13AcGiMXCVK+jvnsNusPIIsojx/3keI+GDYiZNMheP+XW0L4jXsoWvlcaWyyX4sPDPuLvo2Mb3ww7cxc6OpV/K9iNh8KN6cFFAkliNQfV1Dz/5pPQr+1OcX+SygRhDJSzu8y1SB2N3BTk2Yus/+OK4Er4/QlTHYBw3tsXpNrJWVn/Gy8ZxB9Z4ajCWiDSwt5W4jJYwjO627dTws=
+    secure: cFHD7EcVzolSlQF2aGPnh7QDkKRzKYPLKC9t/dGhe/YRtZi3zU0K0WbJj69+1kXcM4XlFCv59GtcF5EbzjyoJ27zT6ifP69BcomB/xMzrwPcCdsgAGXNpMbCgTzXKbiyOlFtNWz7XYauHEvDjqu5/8lhsZMxAjuc+k98P3OXA4YEZUvtDMZiMPLgKRst/7Qpr64bxNZRUPEMo8eJlMOmDklXedH7SAlQR0WmXZqyQme/oW+bRTtOKi/UwFb4C4lBUuX1I+dWinKkX+6SE7dybJlxB+gN0lzuO6Z/ZgnZ0Ev9bNkLrbbow2PaQAZRtdi5VUHdJgQfYV5295+KHDJXG+J3epUIHWJi+Q8aM5YnfDEsRdy9FDJ0z8Qv5y4bqBWzBOtK1zV4sGCeSqcNOKi6l3XQ8qynJUgy+4fPrgAMdE0Rv0Ms3yPmecLGMHMz0UehARj/REV6GXRi/qATzbh3HjKsc4Chx/uwYlPivMl4RxtO0SUdfIb/IRyx+yw19Ck1oc7w8RQSolXeNdofrJqJnwzpSHlO0j+4jwAutr9ieXZ3g5+SKFo9zeQLGyaPlr+iMlScDQXHamk+yzaZl29xVes9db1/MD4//qPsck8Gf26zrgohWqEqgzVRsTAbs2FoTompoebSSc/UjCTGJzCnbTZZRJj4CUdXHisVML4voDA=
   app: escape-app
   on:
     repo: mintona/escape_app
