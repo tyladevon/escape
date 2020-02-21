@@ -11,7 +11,10 @@ RSpec.describe 'As a visitor' do
 
       visit '/'
 
-      click_button 'Sign-In with Google'
+      expect do
+        click_button 'Sign-In with Google'
+      end.
+      to change { User.count }.by(1)
 
       user = User.last
 
@@ -21,14 +24,22 @@ RSpec.describe 'As a visitor' do
 
     it 'I can login as a returning user with Google Oauth' do
       stub_omniauth
-      user = create(:user, email: "alison.minton@gmail.com")
+      user = create(:user, email: "alison.minton@gmail.com",
+                           first_name: "Alison",
+                           last_name: "Minton",
+                           image: "https://lh3.googleusercontent.com/a-/AAuE7mCBgq8kmZ4WnKkIrlNB5osGhDM8rkQxeh14ZxoxgA")
 
       visit '/'
 
-      click_button 'Sign-In with Google'
+      expect do
+        click_button 'Sign-In with Google'
+      end.
+      to change { User.count }.by(0)
 
       expect(current_path).to eq('/profile')
-      expect(page).to have_content("Helo, #{user.first_name}")
+      expect(page).to have_content("Hello, #{user.first_name}")
+
+      expect(User.count).to eq(1)
     end
   end
 end
