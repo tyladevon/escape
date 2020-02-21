@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   get 'auth/google_oauth2', as: 'google_oauth2_login'
   get '/auth/:provider/callback', to: 'users#create'
+
+  get '/profile', to: 'users#show'
 end
