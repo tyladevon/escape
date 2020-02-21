@@ -42,4 +42,19 @@ RSpec.describe 'As a visitor' do
       expect(User.count).to eq(1)
     end
   end
+
+  describe 'and I am already logged in' do
+      it 'I see an adjusted welcome page' do
+
+      stub_omniauth
+      visit '/'
+
+      click_button 'Sign-In with Google'
+
+      visit '/'
+
+      expect(page).to_not have_button('Sign-In with Google')
+      expect(page).to have_content('You have already signed in. Would you like to plan a trip?')
+    end
+  end
 end
