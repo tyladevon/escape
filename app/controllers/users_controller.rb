@@ -5,15 +5,17 @@ class UsersController < ApplicationController
     uid = google_auth_hash["uid"]
     user_info = google_auth_hash["info"]
     #name, email, first_name, last_name, image, google_token
-
-    user = User.create(
+    user = User.create!(
                       first_name: user_info["first_name"],
                       last_name: user_info["last_name"],
                       email: user_info["email"],
                       image: user_info["image"],
                       google_token: google_token)
-
+    session[:user_id] = user.id
     redirect_to '/profile'
+  end
+
+  def show
   end
 
   private
