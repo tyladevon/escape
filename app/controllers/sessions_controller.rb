@@ -16,6 +16,12 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    session.delete(:user_id)
+    flash[:success] = 'You have been logged out.'
+    redirect_to '/'
+  end
+
   private
 
   def google_auth_hash
