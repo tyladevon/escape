@@ -12,7 +12,14 @@
   <body>
     <nav>
       <%= link_to 'About' %>
+      <%= link_to 'Log Out', '/logout' if current_user %>
     </nav>
+
+    <% flash.each do |name, msg| %>
+      <div class ="<%= name %>-flash">
+        <p class ="<%= name %>-flash"><%= msg %></p>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
