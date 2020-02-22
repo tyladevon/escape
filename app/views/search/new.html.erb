@@ -20,6 +20,8 @@
       </section>
     <% end %>
     <p>Want to hike <i>and</i> climb? You'll be able to add another activity to your trip in a bit.</p>
+    
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= submit_tag 'Continue', class: "button" %>
   <% end %>
 
