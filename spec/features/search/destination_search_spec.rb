@@ -51,7 +51,7 @@ RSpec.describe 'As a logged in user' do
 
         click_button "Continue"
 
-        expect(page).to have_content('Please enter a destination.')
+        expect(page).to have_content("The destination you entered cannot be found. Please try again.")
 
         expect(page).to have_button('Continue')
 
