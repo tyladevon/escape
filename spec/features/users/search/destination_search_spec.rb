@@ -10,11 +10,13 @@ RSpec.describe 'As a logged in user' do
 
         visit '/search'
 
+        destination = "Los Angeles"
+
         expect(page).to have_field("destination")
-        fill_in "destination", with: "Los Angeles"
+        fill_in "destination", with: destination
 
         expect(page).to have_content("Choose your first activity:")
-        # expect the page to have the check boxes
+
         within "#activity-climbing" do
           expect(page).to have_unchecked_field("selected_activity_")
           check "selected_activity_"
@@ -31,6 +33,7 @@ RSpec.describe 'As a logged in user' do
         expect(current_path).to eq('/search/climb')
 
         expect(page).to have_content('Coming Soon!')
+        expect(page).to have_content("Destination: #{destination}")
       end
     end
   end
