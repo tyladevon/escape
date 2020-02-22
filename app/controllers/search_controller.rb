@@ -4,18 +4,22 @@ class SearchController < ApplicationController
   end
 
   def create
-
     destination = params[:destination].delete(' ')
-    response = Faraday.get("https://escape-app-api.herokuapp.com/api/v1/destination/#{destination}")
 
-    parsed_json = JSON.parse(response.body, symbolize_names: true)[:candidates].first
-    address = parsed_json[:formatted_address]
-    photo = parsed_json[:photos].first[:photo_reference]
-    session[:destination] = { name: params[:destination], address: address, photo_reference: photo}
+    destination_info = EscapeService.new.get_destination_info(destination)
+    if destination_info == 404
+      flash[:notice] = "The destination you entered cannot be found. Please try again."
+      @activities = ["climbing", "hiking"]
+      render :new
+    else
 
-    if params[:selected_activity].first == "climbing"
+      address = destination_info[:formatted_address]
+      photo = destination_info[:photos].first[:photo_reference]
+      session[:destination] = { name: params[:destination], address: address, photo_reference: photo}
 
-      redirect_to '/search/climbs/new'
+      if params[:selected_activity].first == "climbing"
+        redirect_to '/search/climbs/new'
+      end
     end
   end
 end
