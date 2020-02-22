@@ -15,7 +15,7 @@ class SearchController < ApplicationController
 
     if params[:selected_activity].first == "climbing"
 
-      redirect_to '/search/climb'
+      redirect_to '/search/climbs/new'
     end
   end
 end

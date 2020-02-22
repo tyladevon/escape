@@ -1,4 +1,4 @@
-class Search::ClimbController < ApplicationController
+class Search::ClimbsController < ApplicationController
   def new
     @destination = session[:destination]
   end
