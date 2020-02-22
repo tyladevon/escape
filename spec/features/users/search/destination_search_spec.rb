@@ -12,7 +12,6 @@ RSpec.describe 'As a logged in user' do
 
         destination = "Los Angeles"
 
-        expect(page).to have_field("destination")
         fill_in "destination", with: destination
 
         expect(page).to have_content("Choose your first activity:")
@@ -26,13 +25,10 @@ RSpec.describe 'As a logged in user' do
           expect(page).to have_unchecked_field("selected_activity_")
         end
 
-        expect(page).to have_button("Continue")
-
         click_button "Continue"
 
-        expect(current_path).to eq('/search/climb')
+        expect(current_path).to eq('/search/climbs/new')
 
-        expect(page).to have_content('Coming Soon!')
         expect(page).to have_content("Destination: #{destination}")
       end
     end
