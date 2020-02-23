@@ -7,8 +7,12 @@ class SearchController < ApplicationController
     destination = params[:destination].delete(' ')
 
     destination_info = EscapeService.new.get_destination_info(destination)
-    if destination_info == 404
+    if destination_info == 404 || destination_info.nil?
       flash[:notice] = "The destination you entered cannot be found. Please try again."
+      @activities = ["climbing", "hiking"]
+      render :new
+    elsif params[:selected_activity].nil?
+      flash[:notice] = "Please select one activity."
       @activities = ["climbing", "hiking"]
       render :new
     else
