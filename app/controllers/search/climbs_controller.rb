@@ -11,4 +11,8 @@ class Search::ClimbsController < ApplicationController
     redirect_to "/search/climbs"
   end
 
+  def index
+    
+  end
+
 end
