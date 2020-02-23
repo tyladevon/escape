@@ -3,8 +3,7 @@ require 'rails_helper'
 describe EscapeService do
   describe 'instance methods' do
     describe '#get_destination_info' do
-      it 'returns the information for a given destination' do
-        WebMock.allow_net_connect!
+      it 'returns the information for a given destination', :vcr do
 
         service = EscapeService.new
         destination = "LosAngeles"
