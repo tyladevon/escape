@@ -1,6 +1,6 @@
-<h1></h1>
-<h1>Destination: <%= @destination["name"] %></h1>
-<h3><%= @destination["address"] %></h3>
+<h1>Coming Soon!</h1>
+<h1>Destination: <%= @destination.name %></h1>
+<h3><%= @destination.address %></h3>
 
 <%= form_tag( '/search/climbs' , method: :create) do |f| %>
   <%= select_tag(:min_diff, options_for_select(climb_diff)) %>
