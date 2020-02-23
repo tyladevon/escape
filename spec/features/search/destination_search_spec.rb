@@ -40,7 +40,6 @@ RSpec.describe 'As a logged in user' do
 
     describe 'if I fail to enter a destination' do
       it 'I am alerted with a flash message and can try again' do
-        # WebMock.allow_net_connect!
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -120,7 +119,6 @@ RSpec.describe 'As a logged in user' do
 
         within "#activity-climbing" do
           expect(page).to have_unchecked_field("selected_activity_")
-          # check "selected_activity_"
         end
 
         within "#activity-hiking" do
