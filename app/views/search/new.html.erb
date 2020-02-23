@@ -1,17 +1,17 @@
 <center>
 
   <h1> Let's Get Started! </h1>
-  <p>Enter your destination below.</p>
-  <p>Hint: You can search by city, city & state, city & country or a popular tourist destination.</p>
-  <p>Examples: Denver / Los Angeles / Boston MA / Eiffel Tower / Athens Greece</p>
 
-  <%= form_tag '/search', method: :create do %>
+  <%= form_with url: '/search', method: :create do |form| %>
+    <h1>Enter your destination:</h1>
 
-    <%= label_tag :destination %>
-    <%= text_field_tag :destination, '', :required => true %>
+    <%= form.text_field :destination, :required => true %>
+    <p>Hint: You can search by city, city & state, city & country or a popular tourist destination.</p>
+    <p>Examples: Denver / Los Angeles / Boston MA / Eiffel Tower / Athens Greece</p>
+
     <br>
-    <%= label_tag :activities %>
     <h1>Choose your first activity:</h1>
+
     <% @activities.each do |activity| %>
       <section id="activity-<%= activity %>">
         <p><%= activity %>
@@ -20,9 +20,8 @@
       </section>
     <% end %>
     <p>Want to hike <i>and</i> climb? You'll be able to add another activity to your trip in a bit.</p>
-
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= submit_tag 'Continue', class: "button" %>
+    <%= form.submit 'Continue', class: "button" %>
   <% end %>
 
 </center>
