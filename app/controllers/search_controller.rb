@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
   def new
-    # available_activities
   end
 
   def create
