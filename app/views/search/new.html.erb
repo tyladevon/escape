@@ -11,14 +11,11 @@
 
     <br>
     <h1>Choose your first activity:</h1>
+    <%= radio_button_tag(:activity, "climbing") %>
+    <%= label_tag(:activity_climbing, "Climbing") %>
+    <%= radio_button_tag(:activity, "hiking") %>
+    <%= label_tag(:activity_hiking, "Hiking") %>
 
-    <% @activities.each do |activity| %>
-      <section id="activity-<%= activity %>">
-        <p><%= activity %>
-        <%= check_box_tag 'selected_activity[]', activity%>
-        </p>
-      </section>
-    <% end %>
     <p>Want to hike <i>and</i> climb? You'll be able to add another activity to your trip in a bit.</p>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= form.submit 'Continue', class: "button" %>

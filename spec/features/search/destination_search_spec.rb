@@ -21,15 +21,10 @@ RSpec.describe 'As a logged in user' do
 
         expect(page).to have_content("Choose your first activity:")
 
-        within "#activity-climbing" do
-          expect(page).to have_unchecked_field("selected_activity_")
-          check "selected_activity_"
-        end
+        expect(page).to have_css("#activity_climbing")
+        expect(page).to have_css("#activity_hiking")
 
-        within "#activity-hiking" do
-          expect(page).to have_unchecked_field("selected_activity_")
-        end
-
+        choose 'Climbing'
         click_button "Continue"
 
         expect(current_path).to eq('/search/climbs/new')
@@ -53,9 +48,7 @@ RSpec.describe 'As a logged in user' do
 
         fill_in "destination", with: destination
 
-        within "#activity-climbing" do
-          check "selected_activity_"
-        end
+        choose 'Climbing'
 
         click_button "Continue"
 
@@ -87,9 +80,7 @@ RSpec.describe 'As a logged in user' do
 
         fill_in "destination", with: destination
 
-        within "#activity-climbing" do
-          check "selected_activity_"
-        end
+        choose 'Climbing'
 
         click_button "Continue"
 
@@ -117,13 +108,8 @@ RSpec.describe 'As a logged in user' do
 
         expect(page).to have_content("Choose your first activity:")
 
-        within "#activity-climbing" do
-          expect(page).to have_unchecked_field("selected_activity_")
-        end
-
-        within "#activity-hiking" do
-          expect(page).to have_unchecked_field("selected_activity_")
-        end
+        expect(page).to have_css("#activity_climbing")
+        expect(page).to have_css("#activity_hiking")
 
         click_button "Continue"
 
