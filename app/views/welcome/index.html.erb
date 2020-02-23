@@ -5,6 +5,8 @@
     <% if current_user %>
       <p>You have already signed in. Would you like to plan a trip?</p>
     <% else %>
+      <p>Please sign-in to start planning your next trip.</p>
       <%= button_to 'Sign-In with Google', google_oauth2_login_path, class: "button"%>
+      <p>New to escape? A new account will be started for you when you sign-in with Google.</p>
     <% end %>
 </center>
