@@ -4,13 +4,19 @@ RSpec.describe 'As a logged in user' do
   describe 'I can enter a destinaton' do
     describe 'and enter my first activity' do
       it 'as climbing' do
+        # destination_fixture = File.read('spec/fixtures/los_angeles.json')
+
+        destination = "Los Angeles"
+        # stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/destination/#{destination}").
+        # to_return(status: 200, body: destination_fixture)
+        #
+
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit '/search'
 
-        destination = "Los Angeles"
 
         fill_in "destination", with: destination
 
