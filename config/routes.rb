@@ -14,5 +14,7 @@ Rails.application.routes.draw do
 
   namespace :search do
     get '/climbs/new', to: 'climbs#new'
+    post '/climbs', to: 'climbs#create'
+    # get '/climbs', to: 'climbs#index'
   end
 end
