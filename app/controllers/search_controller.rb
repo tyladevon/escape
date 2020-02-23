@@ -12,10 +12,11 @@ class SearchController < ApplicationController
       @activities = ["climbing", "hiking"]
       render :new
     else
-
+      name = destination_info[:name]
       address = destination_info[:formatted_address]
-      photo = destination_info[:photos].first[:photo_reference]
-      session[:destination] = { name: params[:destination], address: address, photo_reference: photo}
+      lat = destination_info[:geometry][:location][:lat]
+      lng = destination_info[:geometry][:location][:lng]
+      session[:destination] = { name: name, address: address, lat: lat, lng: lng}
 
       if params[:selected_activity].first == "climbing"
         redirect_to '/search/climbs/new'
