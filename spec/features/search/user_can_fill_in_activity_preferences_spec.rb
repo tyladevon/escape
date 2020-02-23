@@ -13,7 +13,7 @@ describe "As a logged-in User, after choosing destination and activity" do
 
     climb_results = File.read('spec/fixtures/climb_results.json')
 
-    stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/climb_results?lat=34.0522342&lon=-118.2436849&max_dist=10&min_diff=5.7&max_diff=5.12").to_return(status: 200, body: climb_results)
+    stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/climb_results").to_return(status: 200, body: climb_results)
 
     visit '/search'
 
@@ -37,8 +37,6 @@ describe "As a logged-in User, after choosing destination and activity" do
     click_on "Find Climbs!"
 
     expect(current_path).to eq("/search/climbs")
-
-    expect()
-    # expect(page).to have_content(climb_results["results"["success"]])
+    expect(page).to have_css(".climb", count: 2)
   end
 end
