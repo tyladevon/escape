@@ -5,6 +5,6 @@ FactoryBot.define do
     destination_address { "MyString" }
     lat { 1.5 }
     lng { 1.5 }
-    user { nil }
+    user
   end
 end
