@@ -1,14 +1,14 @@
 class SearchController < ApplicationController
   def new
-    available_activities
   end
 
   def create
     destination = params[:destination].delete(' ')
     destination_info = EscapeService.new.get_destination_info(destination)
+
     if destination_info == 404 || destination_info.nil?
       destination_error
-    elsif params[:selected_activity].nil?
+    elsif params[:activity].nil?
       activity_selector_error
     else
       save_destination_to_session(destination_info)
@@ -27,20 +27,18 @@ class SearchController < ApplicationController
   end
 
   def redirect_to_activity_search
-    if params[:selected_activity].first == "climbing"
+    if params[:activity] == "climbing"
       redirect_to '/search/climbs/new'
     end
   end
 
   def destination_error
-    flash[:notice] = "The destination you entered cannot be found. Please try again."
-    available_activities
+    flash.now[:notice] = "The destination you entered cannot be found. Please try again."
     render :new
   end
 
   def activity_selector_error
-    flash[:notice] = "Please select one activity."
-    available_activities
+    flash.now[:notice] = "Please select one activity."
     render :new
   end
 end
