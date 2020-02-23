@@ -1,7 +1,7 @@
 class Search::ClimbsController < ApplicationController
 
   def new
-    @destination = session[:destination]
+    @destination = Destination.new(session[:destination])
   end
 
   def create
