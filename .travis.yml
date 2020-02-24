@@ -14,8 +14,6 @@ deploy:
   provider: heroku
   api_key:
     secure: cFHD7EcVzolSlQF2aGPnh7QDkKRzKYPLKC9t/dGhe/YRtZi3zU0K0WbJj69+1kXcM4XlFCv59GtcF5EbzjyoJ27zT6ifP69BcomB/xMzrwPcCdsgAGXNpMbCgTzXKbiyOlFtNWz7XYauHEvDjqu5/8lhsZMxAjuc+k98P3OXA4YEZUvtDMZiMPLgKRst/7Qpr64bxNZRUPEMo8eJlMOmDklXedH7SAlQR0WmXZqyQme/oW+bRTtOKi/UwFb4C4lBUuX1I+dWinKkX+6SE7dybJlxB+gN0lzuO6Z/ZgnZ0Ev9bNkLrbbow2PaQAZRtdi5VUHdJgQfYV5295+KHDJXG+J3epUIHWJi+Q8aM5YnfDEsRdy9FDJ0z8Qv5y4bqBWzBOtK1zV4sGCeSqcNOKi6l3XQ8qynJUgy+4fPrgAMdE0Rv0Ms3yPmecLGMHMz0UehARj/REV6GXRi/qATzbh3HjKsc4Chx/uwYlPivMl4RxtO0SUdfIb/IRyx+yw19Ck1oc7w8RQSolXeNdofrJqJnwzpSHlO0j+4jwAutr9ieXZ3g5+SKFo9zeQLGyaPlr+iMlScDQXHamk+yzaZl29xVes9db1/MD4//qPsck8Gf26zrgohWqEqgzVRsTAbs2FoTompoebSSc/UjCTGJzCnbTZZRJj4CUdXHisVML4voDA=
-    run:
-      - "rake db:migrate"
   app: escape-app
   on:
     repo: mintona/escape_app
