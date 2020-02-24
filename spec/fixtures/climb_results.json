@@ -1,0 +1,19 @@
+{"routes":[{"id":105748786,"name":"The Naked Edge",
+  "type":"Trad","rating":"5.11b","stars":4.9,"starVotes":318,
+  "pitches":6,"location":
+  ["Colorado","Boulder","Eldorado Canyon SP","Redgarden Wall","Redgarden - Tower Two"],
+  "url":"https://www.mountainproject.com/route/105748786/the-naked-edge",
+  "imgSqSmall":"https://cdn-files.apstatic.com/climb/110822565_sqsmall_1494354956.jpg",
+  "imgSmall":"https://cdn-files.apstatic.com/climb/110822565_small_1494354956.jpg",
+  "imgSmallMed":"https://cdn-files.apstatic.com/climb/110822565_smallMed_1494354956.jpg",
+  "imgMedium":"https://cdn-files.apstatic.com/climb/110822565_medium_1494354956.jpg",
+  "longitude":-105.2852,"latitude":39.9312},
+  {"id":105750106,"name":"Rewritten",
+    "type":"Trad","rating":"5.7","stars":4.7,"starVotes":1236,"pitches":6,"location"
+    :["Colorado","Boulder","Eldorado Canyon SP","Redgarden Wall","Redgarden - Lumpe to the top"],
+    "url":"https://www.mountainproject.com/route/105750106/rewritten","imgSqSmall":
+    "https://cdn-files.apstatic.com/climb/113171856_sqsmall_1497744179.jpg","imgSmall"
+    :"https://cdn-files.apstatic.com/climb/113171856_small_1497744179.jpg",
+    "imgSmallMed":"https://cdn-files.apstatic.com/climb/113171856_smallMed_1497744179.jpg",
+    "imgMedium":"https://cdn-files.apstatic.com/climb/113171856_medium_1497744179.jpg",
+    "longitude":-105.2868,"latitude":39.9325}],"success":1}
