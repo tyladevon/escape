@@ -1,15 +1,12 @@
 {
-"candidates": [
-{
-"formatted_address": "Los Angeles, CA, USA",
-"geometry": {
-"location": {
-"lat": 34.0522342,
-"lng": -118.2436849
+"data": {
+"id": "2",
+"type": "destination",
+"attributes": {
+"name": "Los Angeles",
+"full_address": "Los Angeles, CA, USA",
+"longitude": -118.2436849,
+"latitude": 34.0522342
 }
-},
-"name": "Los Angeles"
 }
-],
-"status": "OK"
 }

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get '/logout', to: 'sessions#destroy'
 
+  get '/about', to: 'about#show'
   get '/profile', to: 'users#show'
 
   get '/search', to: 'search#new'

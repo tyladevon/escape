@@ -2,26 +2,23 @@
 
   <h1> Let's Get Started! </h1>
 
-  <%= form_with url: '/search', method: :create do |form| %>
+  <%= form_tag url: '/search', method: :create do %>
     <h1>Enter your destination:</h1>
 
-    <%= form.text_field :destination, :required => true %>
+    <%= text_field_tag :destination, nil, :required => true %>
     <p>Hint: You can search by city, city & state, city & country or a popular tourist destination.</p>
     <p>Examples: Denver / Los Angeles / Boston MA / Eiffel Tower / Athens Greece</p>
 
     <br>
     <h1>Choose your first activity:</h1>
+    <%= radio_button_tag(:activity, "climbing") %>
+    <%= label_tag(:activity_climbing, "Climbing") %>
+    <%= radio_button_tag(:activity, "hiking") %>
+    <%= label_tag(:activity_hiking, "Hiking") %>
 
-    <% @activities.each do |activity| %>
-      <section id="activity-<%= activity %>">
-        <p><%= activity %>
-        <%= check_box_tag 'selected_activity[]', activity%>
-        </p>
-      </section>
-    <% end %>
     <p>Want to hike <i>and</i> climb? You'll be able to add another activity to your trip in a bit.</p>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-    <%= form.submit 'Continue', class: "button" %>
+    <%= submit_tag 'Continue', class: "button" %>
   <% end %>
 
 </center>
