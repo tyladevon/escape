@@ -4,7 +4,12 @@ class SearchController < ApplicationController
 
   def create
     destination = params[:destination].delete(' ')
-    destination_info = EscapeService.new.get_destination_info(destination)
+
+    if destination.length == 0
+      flash[:notice] = "The destination you entered cannot be found. Please try again."
+      return redirect_to '/search'
+    end
+      destination_info = EscapeService.new.get_destination_info(destination)
 
     if destination_info[:data][:id].nil?
       flash[:notice] = "The destination you entered cannot be found. Please try again."
