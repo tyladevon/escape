@@ -39,12 +39,14 @@ RSpec.describe 'As a logged in user' do
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/destination/").
-        to_return(status: 404)
+        not_a_location_fixture = File.read('spec/fixtures/not_a_location.json')
+
+        stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/destination/ ").
+        to_return(status: 200, body: not_a_location_fixture)
 
         visit '/search'
 
-        destination = ""
+        destination = " "
 
         fill_in "destination", with: destination
 
