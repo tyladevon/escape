@@ -2,11 +2,7 @@ class EscapeService
 
   def get_destination_info(destination)
     response = location_response(destination)
-    if response.status == 404
-      return response.status
-    else
-      JSON.parse(response.body, symbolize_names: true)[:candidates].first
-    end
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
