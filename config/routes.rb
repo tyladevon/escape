@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   namespace :search do
     get '/climbs/new', to: 'climbs#new'
   end
+
+  resources :trips, only: [:show]
 end
