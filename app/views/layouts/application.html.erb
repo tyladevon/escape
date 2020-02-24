@@ -15,7 +15,7 @@
       <p>
       <%= image_tag('logos/escape_nav.png', height: '60px') %>
       <%= "Hi, #{current_user.first_name}" if current_user %>
-      <%= link_to 'About' %>
+      <%= link_to 'About', '/about' %>
       <%= link_to 'Log Out', '/logout' if current_user %>
       </p>
     </nav>
