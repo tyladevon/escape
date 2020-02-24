@@ -2,6 +2,15 @@
   <h1>Hello, <%= current_user.first_name %>!</h1>
   <h3>Profile Coming Soon</h3>
   <section>
-    <%= link_to 'Start a New Trip', '/search' %>
+    <%= button_to 'Start a New Trip', '/search', method: :get, class: "button" %>
+  </section>
+
+  <section class ="trips">
+    <h1>My Trips</h1>
+    <% current_user.trips.each do |trip| %>
+      <section id ="trip-<%= trip.id %>">
+        <%= link_to trip.name, "/trips/#{trip.id}" %>
+      </section>
+    <% end %>
   </section>
 </center>
