@@ -7,9 +7,11 @@ class SearchController < ApplicationController
     destination_info = EscapeService.new.get_destination_info(destination)
 
     if destination_info == 404 || destination_info.nil?
-      destination_error
+      flash[:notice] = "The destination you entered cannot be found. Please try again."
+      render :new
     elsif params[:activity].nil?
-      activity_selector_error
+      flash[:notice] = "Please select one activity."
+      render :new
     else
       save_destination_to_session(destination_info)
       redirect_to_activity_search
@@ -32,13 +34,13 @@ class SearchController < ApplicationController
     end
   end
 
-  def destination_error
-    flash.now[:notice] = "The destination you entered cannot be found. Please try again."
-    render :new
-  end
+  # def destination_error
+  #   flash.now[:notice] = "The destination you entered cannot be found. Please try again."
+  #   render :new
+  # end
 
-  def activity_selector_error
-    flash.now[:notice] = "Please select one activity."
-    render :new
-  end
+  # def activity_selector_error
+  #   flash.now[:notice] = "Please select one activity."
+  #   render :new
+  # end
 end
