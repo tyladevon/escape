@@ -23,19 +23,19 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '158'
+      - '161'
       X-Content-Type-Options:
       - nosniff
       Server:
       - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
       Date:
-      - Sun, 23 Feb 2020 17:26:17 GMT
+      - Mon, 24 Feb 2020 19:18:34 GMT
       Via:
       - 1.1 vegur
     body:
       encoding: UTF-8
-      string: '{"candidates":[{"formatted_address":"Los Angeles, CA, USA","geometry":{"location":{"lat":34.0522342,"lng":-118.2436849}},"name":"Los
-        Angeles"}],"status":"OK"}'
+      string: '{"data":{"id":"3","type":"destination","attributes":{"name":"Los Angeles","full_address":"Los
+        Angeles, CA, USA","longitude":-118.2436849,"latitude":34.0522342}}}'
     http_version: null
-  recorded_at: Sun, 23 Feb 2020 17:26:17 GMT
+  recorded_at: Mon, 24 Feb 2020 19:18:34 GMT
 recorded_with: VCR 5.1.0

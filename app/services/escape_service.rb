@@ -5,7 +5,7 @@ class EscapeService
     if response.status == 404
       return response.status
     else
-      JSON.parse(response.body, symbolize_names: true)[:candidates].first
+      JSON.parse(response.body, symbolize_names: true)
     end
   end
 

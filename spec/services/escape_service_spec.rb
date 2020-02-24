@@ -10,12 +10,12 @@ describe EscapeService do
         location_info = service.get_destination_info(destination)
 
         expect(location_info).to be_a Hash
-        expect(location_info).to have_key :formatted_address
-        expect(location_info).to have_key :geometry
-        expect(location_info).to have_key :name
-        expect(location_info[:geometry]).to have_key :location
-        expect(location_info[:geometry][:location]).to have_key :lat
-        expect(location_info[:geometry][:location]).to have_key :lng
+        expect(location_info).to have_key :data
+        expect(location_info[:data]).to have_key :attributes
+        expect(location_info[:data][:attributes]).to have_key :name
+        expect(location_info[:data][:attributes]).to have_key :full_address
+        expect(location_info[:data][:attributes]).to have_key :latitude
+        expect(location_info[:data][:attributes]).to have_key :longitude
       end
     end
   end
