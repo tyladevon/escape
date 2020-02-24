@@ -1,0 +1,16 @@
+<h1>Trip: <%= @trip.name %></h1>
+<h3><%= @trip.destination_name %></h3>
+<h3><%= @trip.destination_address %></h3>
+
+<section class="climbs">
+  <h1>Climbs</h1>
+    <% @trip.climbs.each do |climb| %>
+      <section id="climb-<%= climb.id%>">
+        <%= link_to climb.name, climb.url %>
+      </section>
+    <% end %>
+</section>
+
+<section class="google-map">
+
+</section>
