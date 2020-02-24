@@ -28,8 +28,8 @@ class SearchController < ApplicationController
   def save_destination_to_session(destination_info)
     name = destination_info[:data][:attributes][:name]
     address = destination_info[:data][:attributes][:full_address]
-    lat = destination_info[:data][:attributes][:longitude]
-    lng = destination_info[:data][:attributes][:latitude]
+    lat = destination_info[:data][:attributes][:latitude]
+    lng = destination_info[:data][:attributes][:longitude]
     session[:destination] = { name: name, address: address, lat: lat, lng: lng}
   end
 
