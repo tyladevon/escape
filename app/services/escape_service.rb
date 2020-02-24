@@ -31,6 +31,11 @@ class EscapeService
   def climbs_response(climb_preferences, location)
     connection.get do |req|
       req.url("climb_results")
+      req.params["lat"] = location["lat"]
+      req.params["lon"] = location["lng"]
+      req.params["min_diff"] = climb_preferences["min_diff"]
+      req.params["max_diff"] = climb_preferences["max_diff"]
+      req.params["max_dist"] = climb_preferences["distance"]
     end
   end
 end
