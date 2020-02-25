@@ -43,12 +43,7 @@ describe "As a logged in User" do
       click_on "Find Climbs!"
 
       expect(current_path).to eq('/trip/new')
-      within "climbs" do
-        within "each-route" do
-        expect(page).to have_unchecked_field("select_route")
-        check "select_route"
-        end
-      end 
+      expect("climbs").to_not be_empty
     end 
   end 
 end 
