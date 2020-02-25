@@ -30,6 +30,24 @@
       map: map
     });
 
+    <% @trip.climbs.each_with_index do |climb, index| %>
+    climbCoords<%= index %> = new google.maps.LatLng(<%= climb.lat %>, <%= climb.lng %>);
+     var climbMarker = new google.maps.Marker({
+       position: climbCoords<%= index %>,
+       map: map
+     })
+    <% end %>
+    // climbCoords1 = new google.maps.LatLng(<%= @trip.climbs.first.lat %>, <%= @trip.climbs.first.lng %>);
+    // var climbMarker = new google.maps.Marker({
+    //   position: climbCoords1,
+    //   map: map
+    // })
+    //
+    // climbCoords2 = new google.maps.LatLng(<%= @trip.climbs.last.lat %>, <%= @trip.climbs.last.lng %>);
+    // var climbMarker = new google.maps.Marker({
+    //   position: climbCoords2,
+    //   map: map
+    // })
 
     google.maps.event.addListener(marker, 'click', function () {
       document.getElementById("destination").style.fontSize = "35px";
