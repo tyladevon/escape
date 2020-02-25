@@ -1,14 +1,21 @@
-<h1>Trip: <%= @trip.name %></h1>
-<h3><p id ='destination'><%= @trip.destination_name %></h3></p>
+<center>
+
+<h1>Trip Name: <%= @trip.name %></h1>
+<h3><p id ='destination'>Destination: <%= @trip.destination_name %></h3></p>
 <h3><%= @trip.destination_address %></h3>
+</center>
 
 <section class="climbs">
   <h1>Climbs</h1>
-    <% @trip.climbs.each do |climb| %>
-      <section id="climb-<%= climb.id%>">
-        <%= link_to climb.name, climb.url %>
-      </section>
-    <% end %>
+  <% if !@trip.climbs.empty? %>
+      <% @trip.climbs.each do |climb| %>
+        <section id="climb-<%= climb.id%>">
+          <%= link_to climb.name, climb.url %>
+        </section>
+      <% end %>
+  <% else %>
+    <p>You have not added any climbs yet.</p>
+  <% end %>
 </section>
 
 <section class="google-map">
@@ -41,7 +48,7 @@
                     })
 
            var infowindow<%= index %> = new google.maps.InfoWindow({
-             content:"<%= climb.name %>"
+             content:"<%= climb.name %><br><%= climb.rating %><br>Stars: <%= climb.stars %>"
            });
 
            google.maps.event.addListener(climbMarker<%= index %>, 'click', function () {
