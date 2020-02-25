@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Climb, type: :model do
   describe 'validations' do
-    it { should validate_presence_of :route_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :climb_type }
     it { should validate_presence_of :rating }
@@ -15,6 +14,7 @@ RSpec.describe Climb, type: :model do
     it { should validate_presence_of :lng }
     it { should validate_numericality_of :lng }
     it { should validate_presence_of :url }
+    it { should validate_presence_of :location }
   end
 
   describe 'relationships' do
