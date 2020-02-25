@@ -12,26 +12,6 @@ User.destroy_all
 
 user = User.create!(first_name: "Amy", last_name: "Smith", email: "hi@gmail.com", google_token: 12345)
 
-climb_1_info = {
-            "id": 106080329,
-            "name": "The Peacemaker",
-            "type": "Sport",
-            "rating": "5.10a",
-            "stars": 4.5,
-            "starVotes": 271,
-            "pitches": 7,
-            "location": [
-                "Arizona",
-                "Southern Arizona",
-                "Cochise Stronghold",
-                "West Stronghold",
-                "Sheepshead Area (Southwest)",
-                "The Sheepshead"
-            ],
-            "url": "https://www.mountainproject.com/route/106080329/the-peacemaker",
-            "longitude": -118.6781,
-            "latitude": 34.2709
-        }
 climb_1 = Climb.create!(route_id: 106080329,
             name: "The Peacemaker",
             climb_type: "Sport",
@@ -41,30 +21,6 @@ climb_1 = Climb.create!(route_id: 106080329,
             url: "https://www.mountainproject.com/route/106080329/the-peacemaker",
             lat: 34.2709,
             lng: -118.6781)
-
-climb_2_info =         {
-            "id": 106627453,
-            "name": "The Guillotine",
-            "type": "Sport",
-            "rating": "5.10a/b",
-            "stars": 4.4,
-            "starVotes": 165,
-            "pitches": 1,
-            "location": [
-                "California",
-                "Los Angeles Basin",
-                "Santa Monica Mountains",
-                "Echo Cliffs",
-                "The Alcove"
-            ],
-            "url": "https://www.mountainproject.com/route/106627453/the-guillotine",
-            "imgSqSmall": "https://cdn-files.apstatic.com/climb/108477896_sqsmall_1494284884.jpg",
-            "imgSmall": "https://cdn-files.apstatic.com/climb/108477896_small_1494284884.jpg",
-            "imgSmallMed": "https://cdn-files.apstatic.com/climb/108477896_smallMed_1494284884.jpg",
-            "imgMedium": "https://cdn-files.apstatic.com/climb/108477896_medium_1494284884.jpg",
-            "longitude": -118.7858,
-            "latitude": 34.1495
-        }
 
 climb_2 = Climb.create!(route_id: 106627453,
             name: "The Guillotine",
@@ -84,3 +40,10 @@ trip = Trip.create!(name: "LA trip",
                   user: user)
 
 trip.climbs << [climb_1, climb_2]
+
+trip = Trip.create!(name: "Denver Trip",
+                  destination_name: "Denver",
+                  destination_address: "Denver, CO, USA",
+                  lat: 39.7392358,
+                  lng: -104.990251,
+                  user: user)
