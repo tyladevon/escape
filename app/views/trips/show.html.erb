@@ -1,5 +1,5 @@
 <h1>Trip: <%= @trip.name %></h1>
-<h3><%= @trip.destination_name %></h3>
+<h3><p id ='destination'><%= @trip.destination_name %></h3></p>
 <h3><%= @trip.destination_address %></h3>
 
 <section class="climbs">
@@ -19,7 +19,7 @@
 
     var mapOptions = {
       center: destinationCoords,
-      zoom: 10,
+      zoom: 8,
       disableDefaultUI: true
     };
 
@@ -27,27 +27,27 @@
 
     var marker = new google.maps.Marker({
       position: destinationCoords,
-      map: map
+      map: map,
+      title: "<%= @trip.destination_name %>"
     });
 
     <% @trip.climbs.each_with_index do |climb, index| %>
-    climbCoords<%= index %> = new google.maps.LatLng(<%= climb.lat %>, <%= climb.lng %>);
-     var climbMarker = new google.maps.Marker({
-       position: climbCoords<%= index %>,
-       map: map
-     })
+      climbCoords<%= index %> = new google.maps.LatLng(<%= climb.lat %>, <%= climb.lng %>);
+       var climbMarker<%= index %> = new google.maps.Marker({
+         position: climbCoords<%= index %>,
+         map: map,
+         title: "<%= climb.name%>",
+         icon: {
+  url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"                           }
+       })
+
+       google.maps.event.addListener(climbMarker<%= index %>, 'click', function () {
+         document.getElementById("climb-<%= climb.id %>").style.fontSize = "35px";
+         document.getElementById("climb-<%= climb.id %>").style.color = "red";
+
+       });
     <% end %>
-    // climbCoords1 = new google.maps.LatLng(<%= @trip.climbs.first.lat %>, <%= @trip.climbs.first.lng %>);
-    // var climbMarker = new google.maps.Marker({
-    //   position: climbCoords1,
-    //   map: map
-    // })
-    //
-    // climbCoords2 = new google.maps.LatLng(<%= @trip.climbs.last.lat %>, <%= @trip.climbs.last.lng %>);
-    // var climbMarker = new google.maps.Marker({
-    //   position: climbCoords2,
-    //   map: map
-    // })
+
 
     google.maps.event.addListener(marker, 'click', function () {
       document.getElementById("destination").style.fontSize = "35px";
