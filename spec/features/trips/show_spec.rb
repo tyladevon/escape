@@ -50,11 +50,20 @@ RSpec.describe 'As a logged in user' do
       expect(page).to have_css(".climbs")
 
       within ".climbs" do
-        expect(page).to have_css("#climb-#{climb_1.id}")
-        expect(page).to have_link("#{climb_1.name}", href: climb_1.url)
-        expect(page).to have_css("#climb-#{climb_2.id}")
-        expect(page).to have_link("#{climb_2.name}", href: climb_2.url)
+        within "#climb-#{climb_1.id}" do
+          expect(page).to have_link("#{climb_1.name}", href: climb_1.url)
+          expect(page).to have_content(climb_1.climb_type)
+          expect(page).to have_content(climb_1.rating)
+          expect(page).to have_content(climb_1.stars)
+        end
 
+        within ("#climb-#{climb_2.id}") do
+          expect(page).to have_link("#{climb_2.name}", href: climb_2.url)
+          expect(page).to have_content(climb_2.climb_type)
+          expect(page).to have_content(climb_2.rating)
+          expect(page).to have_content(climb_2.stars)
+        end
+        
         expect(page).to_not have_link("#{climb_3.name}", href: climb_3.url)
         expect(page).to_not have_link("#{climb_4.name}", href: climb_4.url)
       end
