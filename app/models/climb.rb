@@ -1,13 +1,13 @@
 class Climb < ApplicationRecord
-  validates_presence_of :route_id,
-                        :name,
+  validates_presence_of :name,
                         :climb_type,
                         :rating,
                         :stars,
                         :pitches,
                         :lat,
                         :lng,
-                        :url
+                        :url,
+                        :location
 
   validates_numericality_of :stars,
                             :pitches,
