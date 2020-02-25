@@ -8,6 +8,6 @@
     <p><%= climb.stars %></p>
     <p><%= climb.pitches %></p>
     <p><%= climb.location %></p>
-    <p><%= climb.url %></p>
+    <p><%= link_to climb.url, climb.url, target: :_blank %></p>
   </section>
 <% end %>
