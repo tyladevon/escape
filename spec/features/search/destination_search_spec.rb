@@ -1,10 +1,8 @@
 require 'rails_helper'
-
 RSpec.describe 'As a logged in user' do
   describe 'I can enter a destinaton' do
     describe 'and enter my first activity' do
       it 'as climbing' do
-
         destination_fixture = File.read('spec/fixtures/los_angeles.json')
 
         stub_request(:get, "https://escape-app-api.herokuapp.com/api/v1/destination/LosAngeles").
@@ -17,6 +15,7 @@ RSpec.describe 'As a logged in user' do
         visit '/search'
 
         destination = "Los Angeles"
+
         fill_in "destination", with: destination
 
         expect(page).to have_content("Choose your first activity:")
@@ -55,9 +54,7 @@ RSpec.describe 'As a logged in user' do
         click_button "Continue"
 
         expect(page).to have_content("The destination you entered cannot be found. Please try again.")
-
         expect(page).to have_button('Continue')
-
         # within "#activity-climbing" do
         #   expect(page).to have_checked_field("selected_activity_")
         # end
@@ -66,7 +63,6 @@ RSpec.describe 'As a logged in user' do
 
     describe 'if my search returns no results' do
       it 'I am alerted with a flash message and can try again' do
-
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -87,7 +83,6 @@ RSpec.describe 'As a logged in user' do
         click_button "Continue"
 
         expect(page).to have_content("The destination you entered cannot be found. Please try again.")
-
         expect(page).to have_button('Continue')
       end
     end
@@ -106,6 +101,7 @@ RSpec.describe 'As a logged in user' do
         visit '/search'
 
         destination = "Los Angeles"
+
         fill_in "destination", with: destination
 
         expect(page).to have_content("Choose your first activity:")
@@ -114,7 +110,7 @@ RSpec.describe 'As a logged in user' do
         expect(page).to have_css("#activity_hiking")
 
         click_button "Continue"
-
+        
         expect(page).to have_content("Please select one activity.")
         expect(page).to have_button("Continue")
       end
