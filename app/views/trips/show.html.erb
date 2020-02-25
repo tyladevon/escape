@@ -11,6 +11,9 @@
       <% @trip.climbs.each do |climb| %>
         <section id="climb-<%= climb.id%>">
           <%= link_to climb.name, climb.url %>
+          <li>Rating: <%= climb.rating %></li>
+          <li>Type: <%= climb.climb_type %></li>
+          <li>Stars: <%= climb.stars %></li>
         </section>
       <% end %>
   <% else %>
