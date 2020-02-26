@@ -4,13 +4,13 @@
 
 <%= form_tag( '/hikes/trips/new' , method: :get) do |f| %>
   <%= label_tag :distance %>
-  <%= number_field_tag :distance, nil, max: 200 %>
+  <%= number_field_tag :distance, nil, min: 0, max: 200 %>
   <br>
   <%= label_tag :max_results %>
-  <%= number_field_tag :max_results, nil, max: 50 %>
+  <%= number_field_tag :max_results, nil, min: 0, max: 50 %>
   <br>
   <%= label_tag :min_stars %>
-  <%= number_field_tag :min_stars, nil, max: 5  %>
+  <%= number_field_tag :min_stars, nil, min: 0, max: 5  %>
   <br>
   <%= submit_tag "Find Hikes!" %>
 <% end %>
