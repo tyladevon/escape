@@ -26,7 +26,7 @@ describe "As a logged-in User, after choosing destination and activity" do
       fill_in :distance, with: "10"
 
       click_on "Find Climbs!"
-save_and_open_page
+      
       expect(current_path).to eq('/search/climbs/new')
       expect(page).to have_content("Please ensure your minimium difficulty is less than your maximum difficulty in your selection preferences")
     end
