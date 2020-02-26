@@ -13,7 +13,8 @@ RSpec.describe 'As a logged in user' do
                   pitches: 7,
                   url: "https://www.mountainproject.com/route/106080329/the-peacemaker",
                   lat: 34.2709,
-                  lng: -118.6781)
+                  lng: -118.6781,
+                  location: "Test Location 1")
 
       climb_2 = Climb.create!(route_id: 106627453,
                   name: "The Guillotine",
@@ -23,7 +24,8 @@ RSpec.describe 'As a logged in user' do
                   pitches: 1,
                   url: "https://www.mountainproject.com/route/106627453/the-guillotine",
                   lat: 34.1495,
-                  lng: -118.7858)
+                  lng: -118.7858,
+                  location: "Test Location 2")
 
       trip_1.climbs << [climb_1, climb_2]
       trip_2 = create(:trip, user: user)
