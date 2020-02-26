@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'capybara/rails'
 require 'support/factory_bot'
 require 'simplecov'
+require 'vcr'
 SimpleCov.start
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -119,5 +120,8 @@ end
 VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
+  config.filter_sensitive_data('<GOOGLE_MAP_API>') { ENV['GOOGLE_MAP_API'] }
+  config.filter_sensitive_data('<GOOGLE_CLIENT_ID>') { ENV['GOOGLE_CLIENT_ID'] }
+  config.filter_sensitive_data('<GOOGLE_CLIENT_SECRET>') { ENV['GOOGLE_CLIENT_SECRET'] }
   config.configure_rspec_metadata!
 end

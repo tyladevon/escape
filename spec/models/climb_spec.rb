@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Climb, type: :model do
   describe 'validations' do
-    it { should validate_presence_of :route_id }
     it { should validate_presence_of :name }
     it { should validate_presence_of :climb_type }
     it { should validate_presence_of :rating }
@@ -15,6 +14,7 @@ RSpec.describe Climb, type: :model do
     it { should validate_presence_of :lng }
     it { should validate_numericality_of :lng }
     it { should validate_presence_of :url }
+    it { should validate_presence_of :location }
   end
 
   describe 'relationships' do
@@ -34,7 +34,8 @@ RSpec.describe Climb, type: :model do
                       "pitches": 1,
                       "url": "https://www.mountainproject.com/route/105876832/sharks-fin-arete",
                       "longitude": -118.372,
-                      "latitude": 33.9324
+                      "latitude": 33.9324,
+                      "location": "Test"
                     }
 
       climb = Climb.create!(route_id: climb_info[:id],
@@ -46,6 +47,7 @@ RSpec.describe Climb, type: :model do
                             url: climb_info[:url],
                             lat: climb_info[:latitude],
                             lng: climb_info[:longitude],
+                            location: climb_info[:location]
                             )
 
       expect(climb).to be_a Climb
@@ -57,6 +59,7 @@ RSpec.describe Climb, type: :model do
       expect(climb.pitches).to eq(1)
       expect(climb.lat).to eq(33.9324)
       expect(climb.lng).to eq(-118.372)
+      expect(climb.location).to eq("Test")
       expect(climb.url).to eq("https://www.mountainproject.com/route/105876832/sharks-fin-arete")
     end
   end
