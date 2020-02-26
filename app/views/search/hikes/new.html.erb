@@ -1,0 +1,13 @@
+<h1>Hikes Search</h1>
+<h1>Destination: <%= @destination.name %></h1>
+<h3><%= @destination.address %></h3>
+
+<%= form_tag( '/hikes/trips/new' , method: :get) do |f| %>
+  <%= label_tag :distance %>
+  <%= text_field_tag :distance %>
+  <br>
+  <%= label_tag :max_results %>
+  <%= text_field_tag :max_results %>
+  <br>
+  <%= submit_tag "Find Hikes!" %>
+<% end %>
