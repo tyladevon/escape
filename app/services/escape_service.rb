@@ -14,6 +14,18 @@ class EscapeService
     end
   end
 
+  def get_hike_results(params, lat, lng)
+    response = connection.get do |req|
+      req.url ("hike_results")
+      req.params["lat"] = lat
+      req.params["lon"] = lng
+      req.params["max_dist"] = params["max_dist"]
+      req.params["max_results"] = params["max_results"]
+    end
+    JSON.parse(response.body, symbolize_names: true)
+
+  end
+
   private
 
   def connection
