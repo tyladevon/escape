@@ -13,4 +13,3 @@ class EscapeFacade
       end.compact
     end
   end
-end 
