@@ -22,7 +22,7 @@
   <section class = "hike">
     <tr id="hike-result<%= index %>">
       <td><%= check_box_tag "hike_objects[]",
-      {name: hike.name, url: hike.url}.to_json, nil, id: "check-box-#{index}", :class=> "check-box" %></td>
+      {name: hike.name, url: hike.url, lat: hike.lat, lng: hike.lng}.to_json, nil, id: "check-box-#{index}", :class=> "check-box" %></td>
 
       <td><%= link_to hike.name, hike.url, target: :_blank %></td>
     </tr>
