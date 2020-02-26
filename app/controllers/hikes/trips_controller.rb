@@ -33,7 +33,7 @@ class Hikes::TripsController < ApplicationController
       )
 
     end
-
+require "pry"; binding.pry
 
     redirect_to trip_path(new_trip)
 
