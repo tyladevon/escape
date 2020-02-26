@@ -67,7 +67,7 @@ feature "User can add new trip with climbs" do
 
       select "5.7", from: :min_diff
       select "5.12", from: :max_diff
-      select "Sport", from: :type
+      check "sport"
       fill_in :distance, with: distance
       click_on "Find Climbs!"
       

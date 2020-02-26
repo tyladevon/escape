@@ -37,7 +37,7 @@ describe "As a logged in User" do
 
       select "5.7", from: :min_diff
       select "5.12", from: :max_diff
-      select "Sport", from: :type
+      check "sport"
       fill_in :distance, with: "10"
 
       click_on "Find Climbs!"

@@ -22,7 +22,7 @@ describe "As a logged-in User, after choosing destination and activity" do
 
       select "5.9", from: :min_diff
       select "5.7", from: :max_diff
-      select "Sport", from: :type
+      check "sport"
       fill_in :distance, with: "10"
 
       click_on "Find Climbs!"
@@ -51,7 +51,7 @@ describe "As a logged-in User, after choosing destination and activity" do
 
       select "5.6", from: :min_diff
       select "5.7", from: :max_diff
-      select "Sport", from: :type
+      check "sport"
       fill_in :distance, with: "-5"
 
       click_on "Find Climbs!"
@@ -80,7 +80,7 @@ describe "As a logged-in User, after choosing destination and activity" do
   
       select "5.9", from: :min_diff
       select "5.7", from: :max_diff
-      select "Sport", from: :type
+      check "sport"
       fill_in :distance, with: "-5"
   
       click_on "Find Climbs!"
@@ -109,7 +109,7 @@ describe "As a logged-in User, after choosing destination and activity" do
   
       select "5.6", from: :min_diff
       select "5.6", from: :max_diff
-      select "Trad", from: :type
+      check "trad"
       fill_in :distance, with: "2"
   
       click_on "Find Climbs!"
