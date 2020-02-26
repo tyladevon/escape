@@ -1,0 +1,9 @@
+<h1>Hike Results</h1>
+
+<% @hike_options.each do |hike| %>
+  <section class = "hike">
+    <%= hike.name %><br>
+  </section>
+<% end %>
+
+<%= button_to "Save Selected Hikes", '/trip/create', method: :post, class: "button" %>
