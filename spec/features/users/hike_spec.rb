@@ -38,5 +38,8 @@ RSpec.describe "Hikes" do
 
     expect(page).to have_css(".hikes")
 
+    within(".hikes") do
+      expect(page).to have_css(".hike", count: 3)
+    end
   end
 end
