@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :hikes do
     get '/trips/new', to: 'trips#new'
+    post '/trips/create', to: 'trips#create'
   end
 
 end
