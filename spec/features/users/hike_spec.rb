@@ -18,12 +18,17 @@ RSpec.describe "Hikes" do
     expect(page).to have_content("Boulder")
 
     fill_in "distance", with: 1
+    fill_in "max_results", with: 3
+
 
     click_button "Find Hikes"
 
-    expect(current_path).to eq("/trips/hikes/new")
+    expect(current_path).to eq("/hikes/trips/new")
 
-    expect(page).to have_content("Hike Name")
+    expect(page).to have_content("Dakota Ridge to Sanitas Valley Loop")
+    expect(page).to have_content("Mount Sanitas Loop")
+    expect(page).to have_content("Sunshine Lion's Lair Loop")
+    expect(page).to have_css(".hike", count: 3)
     expect(page).to have_button("Save Selected Hikes")
     click_button "Save Selected Hikes"
 
