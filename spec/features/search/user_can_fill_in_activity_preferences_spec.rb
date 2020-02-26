@@ -26,6 +26,6 @@ describe "As a logged-in User, after choosing destination and activity" do
 
     click_on "Find Climbs!"
 
-    expect(current_path).to eq('/trip/new')
+    expect(current_path).to eq(climbs_trips_new_path)
   end
 end

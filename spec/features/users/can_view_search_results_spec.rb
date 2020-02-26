@@ -42,7 +42,7 @@ describe "As a logged in User" do
 
       click_on "Find Climbs!"
 
-      expect(current_path).to eq('/trip/new')
+      expect(current_path).to eq(climbs_trips_new_path)
       expect(page).to have_css(".climbs")
       expect(first('.climbs').text).not_to be_empty
     end
