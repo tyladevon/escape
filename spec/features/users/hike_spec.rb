@@ -30,6 +30,11 @@ RSpec.describe "Hikes" do
     expect(page).to have_content("Sunshine Lion's Lair Loop")
     expect(page).to have_css(".hike", count: 3)
     expect(page).to have_button("Save Selected Hikes")
+
+    check "check-box-0"
+    check "check-box-1"
+    check "check-box-2"
+
     click_button "Save Selected Hikes"
 
     trip = Trip.last
