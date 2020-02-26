@@ -9,5 +9,6 @@ FactoryBot.define do
     lat { 1.5 }
     lng { 1.5 }
     url { "MyString" }
+    location { "MyString" }
   end
 end

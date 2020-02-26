@@ -27,6 +27,5 @@ describe "As a logged-in User, after choosing destination and activity" do
     click_on "Find Climbs!"
 
     expect(current_path).to eq('/trip/new')
-    expect(page).to have_css(".climbs")
   end
 end

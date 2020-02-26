@@ -34,7 +34,8 @@ RSpec.describe Climb, type: :model do
                       "pitches": 1,
                       "url": "https://www.mountainproject.com/route/105876832/sharks-fin-arete",
                       "longitude": -118.372,
-                      "latitude": 33.9324
+                      "latitude": 33.9324,
+                      "location": "Test"
                     }
 
       climb = Climb.create!(route_id: climb_info[:id],
@@ -46,6 +47,7 @@ RSpec.describe Climb, type: :model do
                             url: climb_info[:url],
                             lat: climb_info[:latitude],
                             lng: climb_info[:longitude],
+                            location: climb_info[:location]
                             )
 
       expect(climb).to be_a Climb
@@ -57,6 +59,7 @@ RSpec.describe Climb, type: :model do
       expect(climb.pitches).to eq(1)
       expect(climb.lat).to eq(33.9324)
       expect(climb.lng).to eq(-118.372)
+      expect(climb.location).to eq("Test")
       expect(climb.url).to eq("https://www.mountainproject.com/route/105876832/sharks-fin-arete")
     end
   end
