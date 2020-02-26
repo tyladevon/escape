@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a logged in user' do
   describe 'I can visit a trip show page' do
+
     it 'to see all details about the trip' do
       user = create(:user, first_name: "Alison")
       trip_1 = create(:trip, user: user, lng: -118.2436849, lat: 34.0522342)
@@ -69,10 +70,8 @@ RSpec.describe 'As a logged in user' do
         expect(page).to_not have_link("#{climb_3.name}", href: climb_3.url)
         expect(page).to_not have_link("#{climb_4.name}", href: climb_4.url)
       end
-
       expect(page).to have_css(".google-map")
       expect(page).to have_css("#map")
-      expect("#map").to_not be_empty
     end
 
     describe 'if I have not added any climbs' do
@@ -85,7 +84,6 @@ RSpec.describe 'As a logged in user' do
         visit "/trips/#{trip_1.id}"
 
         expect(page).to have_css("#map")
-        expect("#map").to_not be_empty
       end
 
       it 'I see text alerting me I have not added any climbs yet' do
