@@ -2,7 +2,7 @@ class Hikes::TripsController < ApplicationController
 
   def new
     @location = session[:destination]
-    
+
     lat = session[:destination]["lat"]
     lng = session[:destination]["lng"]
     all_hikes = EscapeService.new.get_hike_results(params, lat, lng)
@@ -23,21 +23,17 @@ class Hikes::TripsController < ApplicationController
       lng: destination["lng"]
     )
 
+    hikes = params["hike_objects"]
 
-    # params["hike_objects"].each do |hike|
-    #   parsed_hike = JSON.parse(hike)
-    #   new_trip.hikes.create(
-    #     # name: parsed_hike["name"],
-    #     # rating: parsed_hike["rating"],
-    #     # stars: parsed_hike["stars"],
-    #     # pitches: parsed_hike["pitches"],
-    #     # location: parsed_hike["location"],
-    #     # lat: parsed_hike["latitude"],
-    #     # lng: parsed_hike["longitude"],
-    #     # hike_type: parsed_hike["hike_type"],
-    #     # url: parsed_hike["url"]
-    #   )
-    # end
+    hikes.each do |hike|
+      parsed_hike = JSON.parse(hike)
+      new_trip.hikes.create(
+        name: parsed_hike["name"],
+        url: parsed_hike["url"]
+      )
+
+    end
+
 
     redirect_to trip_path(new_trip)
 
