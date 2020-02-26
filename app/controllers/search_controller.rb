@@ -36,6 +36,8 @@ class SearchController < ApplicationController
   def redirect_to_activity_search
     if params[:activity] == "climbing"
       redirect_to '/search/climbs/new'
+    elsif params[:activity] == "hiking"
+      redirect_to '/search/hikes/new'
     end
   end
 
