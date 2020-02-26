@@ -2,7 +2,7 @@
 <p><%= @location["address"] %></p>
 
 <h4>Climbing route options for your Trip!</h4>
-<p> Climb Type: <%= climb_results.first.climb_type %> (<%= climb_results.count %> results)</p>
+<p><%= climb_results.count %> results)</p>
 <%= form_tag trip_create_path, method: :post do %>
   <table>
     <tr>  
@@ -15,7 +15,7 @@
     </tr>
     <% climb_results.each_with_index do |climb, index| %>
       <tr id="climb-result-<%=index%>">
-        <td><%= check_box_tag "climb_objects[]", {name:climb.name, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}" %></td>
+        <td><%= check_box_tag "climb_objects[]", {name:climb.name, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}", :class => "check-box" %></td>
         <td><%= link_to climb.name, climb.url, target: :_blank %></td>
         <td><%= climb.rating %></td>
         <td><%= number_with_precision(climb.stars, precision: 1) %></td>
@@ -24,5 +24,32 @@
       </tr>
     <% end %>
   </table>
-  <%= submit_tag "Save Selected Climbs" %>
+  <%= submit_tag "Save Selected Climbs", :id => "submit-button", onmouseover: 'valthisform();' %>
 <% end %>
+
+<script>
+var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+function valthisform()
+{ 
+    var submitbutton = document.getElementById("submit-button")
+    var boxchecked=false;
+    for(var i=0,l=checkboxes.length;i<l;i++)
+    {
+        if(checkboxes[i].checked)
+        {
+            boxchecked=true;
+            break;
+        }
+    }
+    if(boxchecked){
+      submitbutton.disabled = false;
+    }
+    else {
+      submitbutton.disabled = true;
+      }
+}
+for (var i=0; i<checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', valthisform);
+}
+</script>

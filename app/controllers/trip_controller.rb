@@ -1,4 +1,5 @@
 class TripController < ApplicationController 
+
   def new
     @location = session[:destination]
     render locals: {
