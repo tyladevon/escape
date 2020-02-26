@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://escape-app-api.herokuapp.com/api/v1/destination/LosAngeles
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '163'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
+      Date:
+      - Wed, 26 Feb 2020 02:28:04 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"224","type":"destination","attributes":{"name":"Los
+        Angeles","full_address":"Los Angeles, CA, USA","longitude":-118.2436849,"latitude":34.0522342}}}'
+    http_version: null
+  recorded_at: Wed, 26 Feb 2020 02:28:05 GMT
+recorded_with: VCR 5.1.0
