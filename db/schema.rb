@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_231601) do
+ActiveRecord::Schema.define(version: 2020_02_26_195158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,27 @@ ActiveRecord::Schema.define(version: 2020_02_25_231601) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "location"
+  end
+
+  create_table "hikes", force: :cascade do |t|
+    t.string "name"
+    t.bigint "rid"
+    t.string "summary"
+    t.string "difficulty"
+    t.integer "stars"
+    t.string "location"
+    t.float "length"
+    t.integer "ascent"
+    t.integer "descent"
+    t.float "lat"
+    t.float "lng"
+    t.string "url"
+    t.integer "high"
+    t.integer "low"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "trip_id", null: false
+    t.index ["trip_id"], name: "index_hikes_on_trip_id"
   end
 
   create_table "trip_climbs", force: :cascade do |t|
@@ -62,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_231601) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "hikes", "trips"
   add_foreign_key "trip_climbs", "climbs"
   add_foreign_key "trip_climbs", "trips"
   add_foreign_key "trips", "users"
