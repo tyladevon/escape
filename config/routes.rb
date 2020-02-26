@@ -13,8 +13,10 @@ Rails.application.routes.draw do
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
 
-  get '/trip/new', to: "trip#new"
-  post '/trip/create', to: "trip#create"
+  namespace :climbs do 
+    get '/trips/new', to: "trips#new"
+    post '/trips/create', to: "trips#create"
+  end
 
   namespace :search do
     get '/climbs/new', to: 'climbs#new'

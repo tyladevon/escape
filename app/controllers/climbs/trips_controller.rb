@@ -1,4 +1,4 @@
-class TripController < ApplicationController 
+class Climbs::TripsController < ApplicationController 
 
   def new
     @location = session[:destination]
