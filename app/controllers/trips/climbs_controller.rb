@@ -33,7 +33,23 @@ class Trips::ClimbsController < ApplicationController
   def create
     trip = Trip.find(params[:trip_id])
 
-
+    destination = session["destination"]
+    params["climb_objects"].each do |climb|
+      parsed_climb = JSON.parse(climb)
+      trip.climbs.create(
+        name: parsed_climb["name"],
+        route_id: parsed_climb["route_id"],
+        rating: parsed_climb["rating"],
+        stars: parsed_climb["stars"],
+        pitches: parsed_climb["pitches"],
+        location: parsed_climb["location"],
+        lat: parsed_climb["latitude"],
+        lng: parsed_climb["longitude"],
+        climb_type: parsed_climb["climb_type"],
+        url: parsed_climb["url"]
+      )
+    end
+    redirect_to trip_path(trip)
   end
 
   private
