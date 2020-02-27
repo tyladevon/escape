@@ -31,5 +31,32 @@
   <% end %>
 
   </table>
-  <%= submit_tag "Save Selected Hikes", params: {activity: "hiking"}, method: :post, class: "button" %>
+  <%= submit_tag "Save Selected Hikes", params: {activity: "hiking"}, method: :post, class: "button", :id => "submit-button", onmouseover: 'valthisform();', disabled: true %>
 <% end %>
+
+<script>
+var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+function valthisform()
+{
+    var submitbutton = document.getElementById("submit-button")
+    var boxchecked=false;
+    for(var i=0,l=checkboxes.length;i<l;i++)
+    {
+        if(checkboxes[i].checked)
+        {
+            boxchecked=true;
+            break;
+        }
+    }
+    if(boxchecked){
+      submitbutton.disabled = false;
+    }
+    else {
+      submitbutton.disabled = true;
+      }
+}
+for (var i=0; i<checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', valthisform);
+}
+</script>
