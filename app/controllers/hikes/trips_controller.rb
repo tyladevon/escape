@@ -31,7 +31,14 @@ class Hikes::TripsController < ApplicationController
         name: parsed_hike["name"],
         url: parsed_hike["url"],
         lat: parsed_hike["lat"],
-        lng: parsed_hike["lng"]
+        lng: parsed_hike["lng"],
+        summary: parsed_hike["summary"],
+        difficulty: parsed_hike["difficulty"],
+        stars: parsed_hike["stars"],
+        location: parsed_hike["location"],
+        length: parsed_hike["length"],
+        ascent: parsed_hike["ascent"],
+        high: parsed_hike["max_elevation"]
       )
 
     end
