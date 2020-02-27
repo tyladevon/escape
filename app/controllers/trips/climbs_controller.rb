@@ -32,23 +32,28 @@ class Trips::ClimbsController < ApplicationController
 
   def create
     trip = Trip.find(params[:trip_id])
-
-    destination = session["destination"]
+    trip_climb_ids = trip.climbs.pluck(:route_id)
+    count = 0
     params["climb_objects"].each do |climb|
       parsed_climb = JSON.parse(climb)
-      trip.climbs.create(
-        name: parsed_climb["name"],
-        route_id: parsed_climb["route_id"],
-        rating: parsed_climb["rating"],
-        stars: parsed_climb["stars"],
-        pitches: parsed_climb["pitches"],
-        location: parsed_climb["location"],
-        lat: parsed_climb["latitude"],
-        lng: parsed_climb["longitude"],
-        climb_type: parsed_climb["climb_type"],
-        url: parsed_climb["url"]
-      )
+      if trip_climb_ids.include?(parsed_climb["route_id"])
+        count =+ 1
+      else
+        trip.climbs.create(
+          name: parsed_climb["name"],
+          route_id: parsed_climb["route_id"],
+          rating: parsed_climb["rating"],
+          stars: parsed_climb["stars"],
+          pitches: parsed_climb["pitches"],
+          location: parsed_climb["location"],
+          lat: parsed_climb["latitude"],
+          lng: parsed_climb["longitude"],
+          climb_type: parsed_climb["climb_type"],
+          url: parsed_climb["url"]
+        )
+      end
     end
+    flash[:notice] = 'One or more of the climbs you selected are already saved to this trip. Only new climbs were added.' if count >= 1
     redirect_to trip_path(trip)
   end
 
