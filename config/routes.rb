@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/search', to: 'search#new'
   post '/search', to: 'search#create'
 
-  namespace :climbs do 
+  namespace :climbs do
     get '/trips/new', to: "trips#new"
     post '/trips/create', to: "trips#create"
   end
@@ -28,6 +28,12 @@ Rails.application.routes.draw do
   namespace :hikes do
     get '/trips/new', to: 'trips#new'
     post '/trips/create', to: 'trips#create'
+  end
+
+  namespace :trips do
+    get '/:trip_id/search/hikes', to: 'hikes#new'
+    get '/:trip_id/search/hikes/index', to: 'hikes#index'
+    post '/:trip_id/hikes/create', to: 'hikes#create'
   end
 
 end
