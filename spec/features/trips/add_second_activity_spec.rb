@@ -240,22 +240,16 @@ RSpec.describe 'As a logged in user' do
 
           within("#climb-#{climb_1.id}") do
             expect(page).to have_link("#{climb_1.name}", href: climb_1.url)
-            expect(page).to have_content(climb_1.summary)
+            expect(page).to have_content(climb_1.rating)
+            expect(page).to have_content(climb_1.climb_type)
             expect(page).to have_content(climb_1.stars)
-            expect(page).to have_content(climb_1.difficulty)
-            expect(page).to have_content(climb_1.high)
-            expect(page).to have_content(climb_1.length)
-            expect(page).to have_content(climb_1.ascent)
           end
 
           within("#climb-#{climb_2.id}") do
             expect(page).to have_link("#{climb_2.name}", href: climb_2.url)
-            expect(page).to have_content(climb_2.summary)
+            expect(page).to have_content(climb_2.rating)
+            expect(page).to have_content(climb_2.climb_type)
             expect(page).to have_content(climb_2.stars)
-            expect(page).to have_content(climb_2.difficulty)
-            expect(page).to have_content(climb_2.high)
-            expect(page).to have_content(climb_2.length)
-            expect(page).to have_content(climb_2.ascent)
           end
         end
 
