@@ -37,7 +37,7 @@ class Trips::ClimbsController < ApplicationController
     params["climb_objects"].each do |climb|
       parsed_climb = JSON.parse(climb)
       if trip_climb_ids.include?(parsed_climb["route_id"])
-        count =+ 1
+        count += 1
       else
         trip.climbs.create(
           name: parsed_climb["name"],
