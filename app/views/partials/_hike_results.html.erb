@@ -1,0 +1,35 @@
+<%= form_tag path, method: :post do%>
+  <table>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Summary</th>
+      <th>Difficulty</th>
+      <th>Stars</th>
+      <th>Location</th>
+      <th>Length</th>
+      <th>Ascent</th>
+      <th>Max Elevation</th>
+    </tr>
+
+  <% hike_results.each_with_index do |hike, index| %>
+    <section class = "hike">
+      <tr id="hike-result-<%= index %>">
+        <td><%= check_box_tag "hike_objects[]",
+        {name: hike.name, url: hike.url, lat: hike.lat, lng: hike.lng, summary: hike.summary, difficulty: hike.difficulty, stars: hike.stars, location: hike.location, length: hike.length, ascent: hike.ascent, max_elevation: hike.max_elevation}.to_json, nil, id: "check-box-#{index}", :class=> "check-box" %></td>
+
+        <td><%= link_to hike.name, hike.url, target: :_blank %></td>
+        <td><%= hike.summary %></td>
+        <td><%= hike.difficulty %></td>
+        <td><%= hike.stars %></td>
+        <td><%= hike.location %></td>
+        <td><%= hike.length %></td>
+        <td><%= hike.ascent %></td>
+        <td><%= hike.max_elevation %></td>
+      </tr>
+    </section>
+  <% end %>
+
+  </table>
+  <%= submit_tag "Save Selected Hikes", params: {activity: "hiking"}, method: :post, class: "button" %>
+<% end %>
