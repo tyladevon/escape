@@ -21,6 +21,7 @@ class EscapeService
       req.params["lon"] = lng
       req.params["max_dist"] = params["max_dist"]
       req.params["max_results"] = params["max_results"]
+      req.params["min_stars"] = params["min_stars"]
     end
     JSON.parse(response.body, symbolize_names: true)
 
