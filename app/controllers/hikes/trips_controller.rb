@@ -1,7 +1,7 @@
 class Hikes::TripsController < ApplicationController
 
   def new
-    @location = session[:destination]
+    @destination = Destination.new(session[:destination])
 
     lat = session[:destination]["lat"]
     lng = session[:destination]["lng"]
