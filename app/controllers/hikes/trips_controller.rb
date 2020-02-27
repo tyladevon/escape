@@ -7,8 +7,11 @@ class Hikes::TripsController < ApplicationController
     lng = session[:destination]["lng"]
     all_hikes = EscapeService.new.get_hike_results(params, lat, lng)
     @hike_options = all_hikes.map do |hike_response|
-
       HikeOption.new(hike_response)
+    end
+    if @hike_options.count == 0
+      flash[:notice] = "No results returned, please adjust your search and try again."
+      redirect_to "/search/hikes/new"
     end
   end
 
@@ -43,7 +46,5 @@ class Hikes::TripsController < ApplicationController
 
     end
     redirect_to trip_path(new_trip)
-
-
   end
 end
