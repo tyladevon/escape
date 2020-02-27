@@ -10,6 +10,10 @@ class Trips::HikesController < ApplicationController
     @hike_options = all_hikes.map do |hike_response|
       HikeOption.new(hike_response)
     end
+    if @hike_options.count == 0
+      flash[:notice] = "No results returned, please adjust your search and try again."
+      redirect_to "/trips/#{@trip.id}/search/hikes"
+    end
   end
 
   def create
