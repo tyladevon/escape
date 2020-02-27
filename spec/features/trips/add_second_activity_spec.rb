@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'As a logged in user' do
   describe 'I can have both activities on my trip' do
     describe 'if I have created a trip that has climbs' do
-      xit 'I can add hikes to my trip', :vcr do
+      it 'I can add hikes to my trip', :vcr do
         user = create(:user, first_name: "Alison")
         trip_1 = create(:trip, user: user, lng: -118.2436849, lat: 34.0522342)
         climb_1 = Climb.create!(route_id: 106080329,
@@ -88,7 +88,7 @@ RSpec.describe 'As a logged in user' do
         end
       end
 
-      xit 'I am alerted if my search returns no results', :vcr do
+      it 'I am alerted if my search returns no results', :vcr do
         user = create(:user, first_name: "Alison")
         trip_1 = create(:trip, user: user, lng: -101.191819, lat: 37.511714)
         climb = create(:climb, lng: -101.191819, lat: 37.511714)
@@ -110,7 +110,7 @@ RSpec.describe 'As a logged in user' do
     end
 
     describe 'I cannot have duplicate results on my trip' do
-      xit 'I cannot add hikes to my trip that already exist', :vcr do
+      it 'I cannot add hikes to my trip that already exist', :vcr do
         user = create(:user, first_name: "Alison")
         trip_1 = create(:trip, user: user, lng: -118.2436849, lat: 34.0522342)
 
@@ -182,7 +182,7 @@ RSpec.describe 'As a logged in user' do
     end
 
     describe 'if I have a trip that has hikes' do
-      it 'I can add climbs to my trip' do
+      it 'I can add climbs to my trip', :vcr do
         user = create(:user)
         trip_1 = create(:trip, lat: 40.0202, lng: -105.2979, user: user)
         hike_1 = create(:hike, trip: trip_1)
@@ -216,9 +216,9 @@ RSpec.describe 'As a logged in user' do
 
         expect(current_path).to eq("/trips/#{trip_1.id}/search/climbs/index")
 
-        expect(page).to have_css(".climb", count: 3)
+        expect(page).to have_css(".climb", count: 11)
         #check these
-        expect(page).to have_content("3 results")
+        expect(page).to have_content("11 results")
 
         check "check-box-0"
         check "check-box-1"
@@ -226,7 +226,7 @@ RSpec.describe 'As a logged in user' do
         expect do
           click_button "Save Selected Climbs"
         end.
-        to change { Climb.count}.by(1).and change { Trip.count}.by(0)
+        to change { Climb.count}.by(2).and change { Trip.count}.by(0)
 
         climb_1 = Climb.first
         climb_2 = Climb.last
@@ -236,7 +236,7 @@ RSpec.describe 'As a logged in user' do
         expect(page).to have_css(".climbs")
 
         within(".climbs") do
-          expect(page).to have_css(".climb", count: 1)
+          expect(page).to have_css(".climb", count: 2)
 
           within("#climb-#{climb_1.id}") do
             expect(page).to have_link("#{climb_1.name}", href: climb_1.url)
