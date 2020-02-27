@@ -60,11 +60,6 @@
           title: "<%= @trip.destination_name %>"
         });
 
-
-
-
-
-
         <% @trip.climbs.each_with_index do |climb, index| %>
           climbCoords<%= index %> = new google.maps.LatLng(<%= climb.lat %>, <%= climb.lng %>);
            var climbMarker<%= index %> = new google.maps.Marker({
@@ -83,11 +78,6 @@
            });
         <% end %>
 
-
-
-
-
-
         <% @trip.hikes.each_with_index do |hike, index| %>
           hikeCoords<%= index %> = new google.maps.LatLng(<%= hike.lat %>, <%= hike.lng %>);
            var hikeMarker<%= index %> = new google.maps.Marker({
@@ -105,13 +95,6 @@
              infowindow<%= index %>.open(map, hikeMarker<%= index %>);
            });
         <% end %>
-
-
-
-
-
-
-
 
         var infowindow = new google.maps.InfoWindow({
           content:"<%= @trip.destination_name %>"

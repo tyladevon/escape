@@ -89,7 +89,4 @@ RSpec.describe "Hikes" do
 
     expect(page).to have_css("#map")
   end
-  #need to do a test where you enter stars
-  #test if you don't enter stars
-
 end
