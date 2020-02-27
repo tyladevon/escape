@@ -32,6 +32,7 @@ class Hikes::TripsController < ApplicationController
       parsed_hike = JSON.parse(hike)
       new_trip.hikes.create!(
         name: parsed_hike["name"],
+        rid: parsed_hike["rid"],
         url: parsed_hike["url"],
         lat: parsed_hike["lat"],
         lng: parsed_hike["lng"],
