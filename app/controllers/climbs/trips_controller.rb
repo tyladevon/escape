@@ -1,10 +1,9 @@
-class Climbs::TripsController < ApplicationController 
+class Climbs::TripsController < ApplicationController
 
   def new
     @location = session[:destination]
-
     diff_list = ["5.6", "5.7","5.8", "5.9", "5.10", "5.11", "5.12", "5.13"]
-    
+
     min_diff = diff_list.find_index(params["min_diff"])
     max_diff = diff_list.find_index(params["max_diff"])
 
@@ -18,7 +17,7 @@ class Climbs::TripsController < ApplicationController
       flash[:error] = "Please ensure your minimium difficulty is less than your maximum difficulty in your selection preferences"
       redirect_to '/search/climbs/new'
     else
-      escape_facade = EscapeFacade.new(params, @location).climb_options
+      escape_facade = EscapeFacade.new(params, @location["lat"], @location["lng"]).climb_options
       validate_climb_results(escape_facade)
     end
   end
@@ -49,10 +48,10 @@ class Climbs::TripsController < ApplicationController
     redirect_to trip_path(new_trip)
   end
 
-  private 
+  private
 
   def validate_climb_results(escape_facade)
-    if escape_facade.length == 0 
+    if escape_facade.length == 0
         flash[:error] = "No results returned, please adjust your search and try again"
         redirect_to '/search/climbs/new'
     else
