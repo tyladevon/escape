@@ -31,8 +31,8 @@ describe "As a logged-in User, after choosing destination and activity" do
       expect(current_path).to eq(climbs_trips_new_path)
       expect(page).to have_css('.climbs')
       within('.climbs') do
-        expect(page).to have_css('.type')
-        expect(first('.type').text).to_not be_empty
+        expect(page).to have_css('.climb')
+        expect(first('.climb').text).to_not be_empty
       end
     end
     it "user can not select types of climbing as preference and get results" do
@@ -61,8 +61,8 @@ describe "As a logged-in User, after choosing destination and activity" do
       expect(current_path).to eq(climbs_trips_new_path)
       expect(page).to have_css('.climbs')
       within('.climbs') do
-        expect(page).to have_css('.type')
-        expect(first('.type').text).to_not be_empty
+        expect(page).to have_css('.climb')
+        expect(first('.climb').text).to_not be_empty
       end
     end
   end

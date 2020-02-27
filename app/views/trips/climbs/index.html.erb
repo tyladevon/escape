@@ -1,0 +1,10 @@
+<h2><%= @trip.destination_name %></h2>
+<p><%= @trip.destination_address %></p>
+
+<h4>Climbing route options for your Trip!</h4>
+<p><%= climb_results.count %> results</p>
+
+<%= render partial: '/partials/climbs_results', locals:{
+  path: "/trips/#{@trip.id}/climbs/create",
+  climb_results: climb_results
+} %>

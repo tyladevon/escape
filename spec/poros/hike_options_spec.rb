@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe HikeOption do
   it "it exists with attributes" do
     hike_info = {name: "Dakota Ridge to Sanitas Valley Loop",
+                  rid: 7006781,
                   summary: "A technical ascent with a great view of Boulder, followed by a nice, open downhill pitch.",
                   difficulty: "greenBlue",
                   stars: 4,
@@ -20,6 +21,7 @@ RSpec.describe HikeOption do
     expect(hike_options.name).to eq("Dakota Ridge to Sanitas Valley Loop")
     expect(hike_options.summary).to eq("A technical ascent with a great view of Boulder, followed by a nice, open downhill pitch.")
     expect(hike_options.difficulty).to eq("greenBlue")
+    expect(hike_options.rid).to eq(7006781)
     expect(hike_options.stars).to eq(4)
     expect(hike_options.location).to eq("Boulder, Colorado")
     expect(hike_options.length).to eq(2.3)

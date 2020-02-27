@@ -2,7 +2,7 @@ class Hikes::TripsController < ApplicationController
   before_action :require_current_user
 
   def new
-    @location = session[:destination]
+    @destination = Destination.new(session[:destination])
 
     lat = session[:destination]["lat"]
     lng = session[:destination]["lng"]
@@ -33,6 +33,7 @@ class Hikes::TripsController < ApplicationController
       parsed_hike = JSON.parse(hike)
       new_trip.hikes.create!(
         name: parsed_hike["name"],
+        rid: parsed_hike["rid"],
         url: parsed_hike["url"],
         lat: parsed_hike["lat"],
         lng: parsed_hike["lng"],

@@ -5,8 +5,8 @@ class EscapeService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def get_climb_results(params, location)
-    response = climbs_response(params, location)
+  def get_climb_results(params, lat, lng)
+    response = climbs_response(params, lat, lng)
     if response.status == 404
       return response.status
     else
@@ -33,16 +33,26 @@ class EscapeService
     end
   end
 
-  def climbs_response(climb_preferences, location)
+  def climbs_response(climb_preferences, lat, lng)
     connection.get do |req|
       req.url("climb_results")
-      req.params["lat"] = location["lat"]
-      req.params["lon"] = location["lng"]
+      req.params["lat"] = lat
+      req.params["lon"] = lng
       req.params["min_diff"] = climb_preferences["min_diff"]
       req.params["max_diff"] = climb_preferences["max_diff"]
       req.params["max_dist"] = climb_preferences["distance"]
     end
   end
+  # def climbs_response(climb_preferences, location)
+  #   connection.get do |req|
+  #     req.url("climb_results")
+  #     req.params["lat"] = location["lat"]
+  #     req.params["lon"] = location["lng"]
+  #     req.params["min_diff"] = climb_preferences["min_diff"]
+  #     req.params["max_diff"] = climb_preferences["max_diff"]
+  #     req.params["max_dist"] = climb_preferences["distance"]
+  #   end
+  # end
 
   def hikes_response(params, lat, lng)
     connection.get do |req|

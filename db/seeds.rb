@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 TripClimb.destroy_all
 Climb.destroy_all
+Hike.destroy_all
 Trip.destroy_all
 User.destroy_all
 

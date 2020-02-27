@@ -1,0 +1,5 @@
+<h1>Add Hikes to <%= @trip.name %></h1>
+
+<%= render partial: '/partials/hike_search', locals: {
+  path: "/trips/#{@trip.id}/search/hikes/index"
+} %>
