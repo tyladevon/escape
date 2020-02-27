@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a logged in user' do
   describe 'if I have created a trip that has climbs' do
-    it 'I can add hikes to my trip' do
+    it 'I can add hikes to my trip', :vcr do
       user = create(:user, first_name: "Alison")
       trip_1 = create(:trip, user: user, lng: -118.2436849, lat: 34.0522342)
       climb_1 = Climb.create!(route_id: 106080329,
@@ -54,10 +54,10 @@ RSpec.describe 'As a logged in user' do
 
       click_button "Find Hikes"
 
-      expect(current_path).to eq("/hikes/trips/#{trip_1.id}/edit")
+      expect(current_path).to eq("/trips/#{trip_1.id}/search/hikes/index")
 
-      expect(page).to have_css(".hike", count: 0)
-      expect(page).to have_content("? results")
+      expect(page).to have_css(".hike", count: 3)
+      expect(page).to have_content("3 results")
 
       check "check-box-0"
 
@@ -66,12 +66,24 @@ RSpec.describe 'As a logged in user' do
       end.
       to change { Hike.count}.by(1).and change { Trip.count}.by(0)
 
+      hike = Hike.last
+
       expect(current_path).to eq("/trips/#{trip_1.id}")
 
       expect(page).to have_css(".hikes")
 
       within(".hikes") do
         expect(page).to have_css(".hike", count: 1)
+
+        within("#hike-#{Hike.last.id}") do
+          expect(page).to have_link("#{hike.name}", href: hike.url)
+          expect(page).to have_content(hike.summary)
+          expect(page).to have_content(hike.stars)
+          expect(page).to have_content(hike.difficulty)
+          expect(page).to have_content(hike.high)
+          expect(page).to have_content(hike.length)
+          expect(page).to have_content(hike.ascent)
+        end
       end
     end
   end
