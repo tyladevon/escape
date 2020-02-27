@@ -53,7 +53,7 @@ RSpec.describe 'As a visitor' do
   end
 
   describe 'and I am already logged in' do
-      it 'I see an adjusted welcome page' do
+      it 'I am redirected to my profile page' do
 
       stub_omniauth
       visit '/'
@@ -61,9 +61,7 @@ RSpec.describe 'As a visitor' do
       click_button 'Sign-In with Google'
 
       visit '/'
-
-      expect(page).to_not have_button('Sign-In with Google')
-      expect(page).to have_content('You have already signed in. Would you like to plan a trip?')
+      expect(current_path).to eq(profile_path)
     end
   end
 end
