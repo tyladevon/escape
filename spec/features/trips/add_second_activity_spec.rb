@@ -87,6 +87,26 @@ RSpec.describe 'As a logged in user' do
           end
         end
       end
+
+      it 'I am alerted if my search returns no results', :vcr do
+        user = create(:user, first_name: "Alison")
+        trip_1 = create(:trip, user: user, lng: -101.191819, lat: 37.511714)
+        climb = create(:climb, lng: -101.191819, lat: 37.511714)
+        trip_1.climbs << climb
+
+        visit trip_path(trip_1.id)
+
+        click_button 'Add Hikes'
+
+        fill_in "distance", with: 1
+        fill_in "max_results", with: 3
+        fill_in 'min_stars', with: 0
+
+        click_button "Find Hikes"
+
+        expect(page).to have_content('No results returned, please adjust your search and try again.')
+        expect(page).to have_button('Find Hikes')
+      end
     end
 
     describe 'I cannot have duplicate results on my trip' do
@@ -162,4 +182,3 @@ RSpec.describe 'As a logged in user' do
     end
   end
 end
-#flash messages like before
