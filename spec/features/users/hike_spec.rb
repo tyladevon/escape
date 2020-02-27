@@ -54,7 +54,10 @@ RSpec.describe "Hikes" do
     check "check-box-1"
     check "check-box-2"
 
-    click_button "Save Selected Hikes"
+    expect do
+      click_button "Save Selected Hikes"
+    end.
+    to change { Hike.count}.by(3).and change { Trip.count}.by(1)
 
     trip = Trip.last
 
