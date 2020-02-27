@@ -7,9 +7,15 @@ class EscapeFacade
   def climb_options
     results = EscapeService.new.get_climb_results(@params, @location)
     results.map do |result|
-      if result[:type] == @params[:type] || result[:type] == "Sport, TR"
+      if @params.key?(:trad) && @params.key?(:sport) && (result[:type] == "Trad" || result[:type] == "Sport" || result[:type] == "Sport, TR")
         ClimbOptions.new(result)
-      end 
+      elsif !@params.key?(:trad) && !@params.key?(:sport) && (result[:type] == "Trad" || result[:type] == "Sport" || result[:type] == "Sport, TR")
+        ClimbOptions.new(result)
+      elsif @params.key?(:trad) && result[:type] == "Trad"
+        ClimbOptions.new(result)
+      elsif @params.key?(:sport) && (result[:type] == "Sport" || result[:type] == "Sport, TR")
+        ClimbOptions.new(result)
+      end
     end.compact
   end
-end 
+end

@@ -3,14 +3,11 @@ class Climb < ApplicationRecord
                         :climb_type,
                         :rating,
                         :stars,
-                        :pitches,
                         :lat,
                         :lng,
-                        :url,
-                        :location
+                        :url
 
   validates_numericality_of :stars,
-                            :pitches,
                             :lat,
                             :lng
 

@@ -7,14 +7,11 @@ RSpec.describe Climb, type: :model do
     it { should validate_presence_of :rating }
     it { should validate_presence_of :stars }
     it { should validate_numericality_of :stars }
-    it { should validate_presence_of :pitches }
-    it { should validate_numericality_of :pitches }
     it { should validate_presence_of :lat }
     it { should validate_numericality_of :lat }
     it { should validate_presence_of :lng }
     it { should validate_numericality_of :lng }
     it { should validate_presence_of :url }
-    it { should validate_presence_of :location }
   end
 
   describe 'relationships' do
