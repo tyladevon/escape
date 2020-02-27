@@ -1,14 +1,5 @@
 <h1>Add Hikes to <%= @trip.name %></h1>
 
-<%= form_tag "/trips/#{@trip.id}/search/hikes/index" , method: :get do |f| %>
-  <%= label_tag :distance %>
-  <%= number_field_tag :distance, nil, min: 0, max: 200 %>
-  <br>
-  <%= label_tag :max_results %>
-  <%= number_field_tag :max_results, nil, min: 0, max: 50 %>
-  <br>
-  <%= label_tag :min_stars %>
-  <%= number_field_tag :min_stars, nil, min: 0, max: 5  %>
-  <br>
-  <%= submit_tag "Find Hikes!" %>
-<% end %>
+<%= render partial: '/partials/hike_search', locals: {
+  path: "/trips/#{@trip.id}/search/hikes/index"
+} %>
