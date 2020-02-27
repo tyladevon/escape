@@ -1,4 +1,5 @@
 class Climbs::TripsController < ApplicationController 
+  before_action :require_current_user
 
   def new
     @location = session[:destination]

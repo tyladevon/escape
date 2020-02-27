@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    redirect_to '/' unless current_user
+    unless current_user
+      flash[:error] = "Please log in to continue"
+      redirect_to '/'
+    end
   end
 end
