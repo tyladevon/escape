@@ -30,6 +30,12 @@ class Trips::ClimbsController < ApplicationController
     end
   end
 
+  def create
+    trip = Trip.find(params[:trip_id])
+
+
+  end
+
   private
 
   def validate_climb_results(escape_facade)
