@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     post '/:trip_id/hikes/create', to: 'hikes#create'
     get '/:trip_id/search/climbs', to: 'climbs#new'
     get '/:trip_id/search/climbs/index', to: 'climbs#index'
+    post '/:trip_id/climbs/create', to: 'climbs#create'
   end
 
 end
