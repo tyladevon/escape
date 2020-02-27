@@ -4,6 +4,8 @@ class Trips::ClimbsController < ApplicationController
   end
 
   def index
+    @trip = Trip.find(params[:trip_id])
 
+    
   end
 end
