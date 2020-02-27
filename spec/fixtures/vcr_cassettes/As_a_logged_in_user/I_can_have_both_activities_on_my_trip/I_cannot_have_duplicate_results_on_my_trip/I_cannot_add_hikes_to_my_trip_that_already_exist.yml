@@ -1,0 +1,97 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://escape-app-api.herokuapp.com/api/v1/hike_results?lat=34.0522342&lon=-118.2436849&max_dist&max_results=3&min_stars=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1243'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
+      Date:
+      - Thu, 27 Feb 2020 04:56:58 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '[{"name":"Debs Park Loop","rid":7023307,"type":"Hike","summary":"A
+        scenic tour of Deb Park starting at the Audubon Center with ample opportunity
+        to spot lots of bird species.","difficulty":"greenBlue","stars":4.2,"location":"South
+        Pasadena, California","length":2.1,"ascent":423,"descent":-421,"longitude":-118.2011,"latitude":34.0982,"url":"https://www.hikingproject.com/trail/7023307/debs-park-loop","high":834,"low":478},{"name":"Ferndell
+        to the Griffith Park Observatory","rid":7034359,"type":"Hike","summary":"Hike
+        from the base of Griffith Park up to the famous Griffith Park Observatory
+        on this route.","difficulty":"greenBlue","stars":3.7,"location":"Hollywood,
+        California","length":1.3,"ascent":622,"descent":0,"longitude":-118.3078,"latitude":34.1083,"url":"https://www.hikingproject.com/trail/7034359/ferndell-to-the-griffith-park-observatory","high":1128,"low":506},{"name":"Glendale
+        Peak Loop","rid":7034123,"type":"Hike","summary":"Hike this short loop to
+        summit scenic Glendale Peak.","difficulty":"blue","stars":3.5,"location":"Hollywood,
+        California","length":2.5,"ascent":555,"descent":-559,"longitude":-118.2934,"latitude":34.1209,"url":"https://www.hikingproject.com/trail/7034123/glendale-peak-loop","high":1191,"low":797}]'
+    http_version: null
+  recorded_at: Thu, 27 Feb 2020 04:56:56 GMT
+- request:
+    method: get
+    uri: https://escape-app-api.herokuapp.com/api/v1/hike_results?lat=34.0522342&lon=-118.2436849&max_dist&max_results=3&min_stars=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1243'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
+      Date:
+      - Thu, 27 Feb 2020 04:56:58 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '[{"name":"Debs Park Loop","rid":7023307,"type":"Hike","summary":"A
+        scenic tour of Deb Park starting at the Audubon Center with ample opportunity
+        to spot lots of bird species.","difficulty":"greenBlue","stars":4.2,"location":"South
+        Pasadena, California","length":2.1,"ascent":423,"descent":-421,"longitude":-118.2011,"latitude":34.0982,"url":"https://www.hikingproject.com/trail/7023307/debs-park-loop","high":834,"low":478},{"name":"Ferndell
+        to the Griffith Park Observatory","rid":7034359,"type":"Hike","summary":"Hike
+        from the base of Griffith Park up to the famous Griffith Park Observatory
+        on this route.","difficulty":"greenBlue","stars":3.7,"location":"Hollywood,
+        California","length":1.3,"ascent":622,"descent":0,"longitude":-118.3078,"latitude":34.1083,"url":"https://www.hikingproject.com/trail/7034359/ferndell-to-the-griffith-park-observatory","high":1128,"low":506},{"name":"Glendale
+        Peak Loop","rid":7034123,"type":"Hike","summary":"Hike this short loop to
+        summit scenic Glendale Peak.","difficulty":"blue","stars":3.5,"location":"Hollywood,
+        California","length":2.5,"ascent":555,"descent":-559,"longitude":-118.2934,"latitude":34.1209,"url":"https://www.hikingproject.com/trail/7034123/glendale-peak-loop","high":1191,"low":797}]'
+    http_version: null
+  recorded_at: Thu, 27 Feb 2020 04:56:57 GMT
+recorded_with: VCR 5.1.0
