@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://escape-app-api.herokuapp.com/api/v1/destination/Boulder
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '154'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
+      Date:
+      - Wed, 26 Feb 2020 18:46:17 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '{"data":{"id":"16","type":"destination","attributes":{"name":"Boulder","full_address":"Boulder,
+        CO, USA","longitude":-105.2705456,"latitude":40.0149856}}}'
+    http_version: null
+  recorded_at: Wed, 26 Feb 2020 18:46:17 GMT
+- request:
+    method: get
+    uri: https://escape-app-api.herokuapp.com/api/v1/hike_results?lat=40.0149856&lon=-105.2705456&max_dist&max_results=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1216'
+      X-Content-Type-Options:
+      - nosniff
+      Server:
+      - WEBrick/1.4.2 (Ruby/2.5.7/2019-10-01)
+      Date:
+      - Wed, 26 Feb 2020 18:46:17 GMT
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: '[{"name":"Dakota Ridge to Sanitas Valley Loop","rid":7006781,"type":"Hike","summary":"A
+        technical ascent with a great view of Boulder, followed by a nice, open downhill
+        pitch.","difficulty":"greenBlue","stars":4,"location":"Boulder, Colorado","length":2.3,"ascent":458,"descent":-458,"longitude":-105.2942,"latitude":40.0207,"url":"https://www.hikingproject.com/trail/7006781/dakota-ridge-to-sanitas-valley-loop","high":5961,"low":5503},{"name":"Mount
+        Sanitas Loop","rid":7000000,"type":"Hike","summary":"Very popular and scenic
+        loop right from the edge of town.","difficulty":"blueBlack","stars":4.2,"location":"Boulder,
+        Colorado","length":3.2,"ascent":1281,"descent":-1280,"longitude":-105.2977,"latitude":40.0202,"url":"https://www.hikingproject.com/trail/7000000/mount-sanitas-loop","high":6780,"low":5521},{"name":"Sunshine
+        Lion''s Lair Loop","rid":7004226,"type":"Hike","summary":"Great Mount Sanitas
+        views are the reward for this gentler loop in Sunshine Canyon.","difficulty":"blue","stars":4.5,"location":"Boulder,
+        Colorado","length":5.3,"ascent":1261,"descent":-1282,"longitude":-105.2979,"latitude":40.02,"url":"https://www.hikingproject.com/trail/7004226/sunshine-lions-lair-loop","high":6800,"low":5530}]'
+    http_version: null
+  recorded_at: Wed, 26 Feb 2020 18:46:17 GMT
+recorded_with: VCR 5.1.0

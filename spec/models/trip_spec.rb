@@ -15,6 +15,7 @@ RSpec.describe Trip, type: :model do
     it { should belong_to :user}
     it { should have_many :trip_climbs}
     it { should have_many(:climbs).through(:trip_climbs)}
+    it {should have_many :hikes}
   end
 
   describe 'attributes' do
