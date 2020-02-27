@@ -1,6 +1,8 @@
+<center>
 <h1>Destination: <%= @destination.name %></h1>
 <h3><%= @destination.address %></h3>
 
 <%= render partial: '/partials/climbs_search', locals: {
   path: climbs_trips_new_path
 } %>
+</center>

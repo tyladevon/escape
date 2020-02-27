@@ -35,12 +35,12 @@
       </div>
     </nav>
 
-    <% flash.each do |name, msg| %>
-      <div class ="<%= name %>-flash">
-        <p class ="<%= name %>-flash"><%= msg %></p>
-      </div>
-    <% end %>
     <div class="container-fluid">
+      <% flash.each do |name, msg| %>
+        <div class ="<%= name %>-flash">
+          <p class ="<%= name %>-flash"><%= msg %></p>
+        </div>
+      <% end %>
       <%= yield %>
     </div>
     <!-- Optional JavaScript -->

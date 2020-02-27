@@ -92,4 +92,14 @@ nav {
   }
 }
 
+form {
+  line-height: 30px;
+  input[type=text], select {
+    width: 100px;
+    text-align-last:center;
+  }
+  input[type=number], select {
+    border-radius: 8px;
+  }
+}
 
