@@ -1,5 +1,5 @@
 class Climbs::TripsController < ApplicationController
-
+  before_action :require_current_user
   def new
     @location = session[:destination]
     diff_list = ["5.6", "5.7","5.8", "5.9", "5.10", "5.11", "5.12", "5.13"]

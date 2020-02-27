@@ -55,9 +55,6 @@ RSpec.describe 'As a logged in user' do
 
         expect(page).to have_content("The destination you entered cannot be found. Please try again.")
         expect(page).to have_button('Continue')
-        # within "#activity-climbing" do
-        #   expect(page).to have_checked_field("selected_activity_")
-        # end
       end
     end
 

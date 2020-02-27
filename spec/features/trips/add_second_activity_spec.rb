@@ -90,12 +90,12 @@ RSpec.describe 'As a logged in user' do
 
       it 'I am alerted if my search returns no results', :vcr do
         user = create(:user, first_name: "Alison")
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
         trip_1 = create(:trip, user: user, lng: -101.191819, lat: 37.511714)
         climb = create(:climb, lng: -101.191819, lat: 37.511714)
         trip_1.climbs << climb
 
         visit trip_path(trip_1.id)
-
         click_button 'Add Hikes'
 
         fill_in "distance", with: 1
