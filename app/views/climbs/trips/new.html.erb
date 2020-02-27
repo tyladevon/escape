@@ -2,38 +2,18 @@
 <p><%= @location["address"] %></p>
 
 <h4>Climbing route options for your Trip!</h4>
-<p><%= climb_results.count %> results)</p>
-<%= form_tag climbs_trips_create_path, method: :post do %>
-  <table>
-    <tr>  
-      <th></th>
-      <th>Name</th>
-      <th>Rating</th>
-      <th>Stars</th>
-      <th>Pitches</th>
-      <th>Location</th>
-    </tr>
-    <section class="climbs">
-      <% climb_results.each_with_index do |climb, index| %>
-        <tr id="climb-result-<%=index%>">
-          <td><%= check_box_tag "climb_objects[]", {name:climb.name, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}", :class => "check-box" %></td>
-          <td><%= link_to climb.name, climb.url, target: :_blank %></td>
-          <td><%= climb.rating %></td>
-          <td><%= number_with_precision(climb.stars, precision: 1) %></td>
-          <td><%= climb.pitches %></td>
-          <td><%= climb.location %></td>
-        </tr>
-      <% end %>
-    </section>
-  </table>
-  <%= submit_tag "Save Selected Climbs", :id => "submit-button", onmouseover: 'valthisform();', disabled: true %>
-<% end %>
+<p><%= climb_results.count %> results</p>
+
+<%= render partial: '/partials/climbs_results', locals: {
+  path: climbs_trips_create_path,
+  climb_results: climb_results
+} %>
 
 <script>
 var checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 function valthisform()
-{ 
+{
     var submitbutton = document.getElementById("submit-button")
     var boxchecked=false;
     for(var i=0,l=checkboxes.length;i<l;i++)
