@@ -33,7 +33,7 @@
           <li>Location: <%= hike.location %></li>
           <li>Distance in Miles: <%= hike.length %></li>
           <li>Elevation Gain: <%= hike.ascent %></li>
-          <li>Max Elevation: <%= hike.high %></li>        
+          <li>Max Elevation: <%= hike.high %></li>
         </section>
       <% end %>
   <% else %>
@@ -98,7 +98,7 @@
                     })
 
            var infowindow<%= index %> = new google.maps.InfoWindow({
-             content:"<%= hike.name %>"
+             content:"<%= hike.name %><br>Difficulty: <%= hike.difficulty %><br>Stars: <%= hike.stars %><br>Distance in Miles: <%= hike.length %>"
            });
 
            google.maps.event.addListener(hikeMarker<%= index %>, 'click', function () {
