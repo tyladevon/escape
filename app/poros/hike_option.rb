@@ -15,5 +15,4 @@ class HikeOption
     @ascent = attributes[:ascent]
     @max_elevation = attributes[:high]
   end
-
 end
