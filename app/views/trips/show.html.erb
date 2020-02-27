@@ -27,6 +27,13 @@
       <% @trip.hikes.each do |hike| %>
         <section id="hike-<%= hike.id%>" class = "hike">
           <%= link_to hike.name, hike.url, target: :_blank %>
+          <li><%= hike.summary %></li>
+          <li>Difficulty: <%= hike.difficulty %></li>
+          <li>Stars: <%= hike.stars %></li>
+          <li>Location: <%= hike.location %></li>
+          <li>Distance in Miles: <%= hike.length %></li>
+          <li>Elevation Gain: <%= hike.ascent %></li>
+          <li>Max Elevation: <%= hike.high %></li>        
         </section>
       <% end %>
   <% else %>
