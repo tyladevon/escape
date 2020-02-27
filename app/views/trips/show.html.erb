@@ -1,9 +1,9 @@
 <center>
-
-<h1>Trip Name: <%= @trip.name %></h1>
-<h3><p id ='destination'>Destination: <%= @trip.destination_name %></h3></p>
-<h3><%= @trip.destination_address %></h3>
+  <h1>Trip Name: <%= @trip.name %></h1>
+  <h3><p id ='destination'>Destination: <%= @trip.destination_name %></h3></p>
+  <h3><%= @trip.destination_address %></h3>
 </center>
+
 
 <section class="climbs">
   <h1>Climbs</h1>
@@ -23,6 +23,7 @@
 
 <section class="hikes">
   <h1>Hikes</h1>
+  <%= button_to 'Add Hikes', "/trips/#{@trip.id}/search/hikes", method: :get, class: "button" %>
   <% if !@trip.hikes.empty? %>
       <% @trip.hikes.each do |hike| %>
         <section id="hike-<%= hike.id%>" class = "hike">
