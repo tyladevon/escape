@@ -13,7 +13,7 @@
       <section class="climb">
 
         <tr id="climb-result-<%=index%>">
-          <td><%= check_box_tag "climb_objects[]", {name:climb.name, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}", :class => "check-box" %></td>
+          <td><%= check_box_tag "climb_objects[]", {name:climb.name, route_id: climb.route_id, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}", :class => "check-box" %></td>
           <td><%= link_to climb.name, climb.url, target: :_blank %></td>
           <td><%= climb.rating %></td>
           <td><%= number_with_precision(climb.stars, precision: 1) %></td>
