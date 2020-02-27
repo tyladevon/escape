@@ -10,6 +10,8 @@
     </tr>
     <section class="climbs">
       <% climb_results.each_with_index do |climb, index| %>
+      <section class="climb">
+
         <tr id="climb-result-<%=index%>">
           <td><%= check_box_tag "climb_objects[]", {name:climb.name, rating:climb.rating, stars:climb.stars, pitches:climb.pitches, location:climb.location, url:climb.url, longitude:climb.longitude, latitude:climb.latitude, climb_type:climb.climb_type}.to_json, nil, :id => "check-box-#{index}", :class => "check-box" %></td>
           <td><%= link_to climb.name, climb.url, target: :_blank %></td>
@@ -18,8 +20,9 @@
           <td><%= climb.pitches %></td>
           <td><%= climb.location %></td>
         </tr>
+      </section>
       <% end %>
     </section>
   </table>
-  <%= submit_tag "Save Selected Climbs", :id => "submit-button", onmouseover: 'valthisform();', disabled: true %>
+  <%= submit_tag "Save Selected Climbs", :id => "submit-button", onmouseover: 'valthisform();', disabled: false %>
 <% end %>
