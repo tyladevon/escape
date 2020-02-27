@@ -11,7 +11,7 @@
 
   <% if !@trip.climbs.empty? %>
       <% @trip.climbs.each do |climb| %>
-        <section id="climb-<%= climb.id%>">
+        <section id="climb-<%= climb.id%>" class = "climb">
           <%= link_to climb.name, climb.url, target: :_blank %>
           <li>Rating: <%= climb.rating %></li>
           <li>Type: <%= climb.climb_type %></li>
