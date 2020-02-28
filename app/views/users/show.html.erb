@@ -1,15 +1,22 @@
 <center>
-  <h1>Hello, <%= current_user.first_name %>!</h1>
-
   <section class ="trips">
     <h1>My Trips</h1>
     <% if current_user.trips.empty? %>
       <p>You have not added any trips yet.</p>
     <% else %>
       <% current_user.trips.each do |trip| %>
-        <section id ="trip-<%= trip.id %>">
-          <%= link_to trip.name, "/trips/#{trip.id}" %>
-        </section>
+        <div class="card">
+          <div class="card-header">
+            <section id ="trip-<%= trip.id %>">
+              <%= link_to trip.name, "/trips/#{trip.id}" %>
+            </section>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= trip.destination_address %></p>
+            <p class="card-text">Climbs: <%=trip.climbs.count%></p>
+            <p class="card-text">Hikes: <%=trip.hikes.count%></p>
+          </div>
+        </div>
       <% end %>
     <% end %>
     <%= button_to 'Start a New Trip', '/search', method: :get, class: "button" %>

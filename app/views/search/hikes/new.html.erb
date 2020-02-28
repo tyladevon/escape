@@ -1,7 +1,8 @@
-<h1>Hikes Search</h1>
+<center>
 <h1>Destination: <%= @destination.name %></h1>
 <h3><%= @destination.address %></h3>
 
 <%= render partial: '/partials/hike_search', locals: {
   path: '/hikes/trips/new'
 } %>
+</center>

@@ -19,7 +19,6 @@ RSpec.describe 'As a visitor' do
       user = User.last
 
       expect(current_path).to eq('/profile')
-      expect(page).to have_content("Hello, #{user.first_name}!")
 
       within "nav" do
         expect(page).to have_content("Hi, #{user.first_name}")
@@ -42,7 +41,6 @@ RSpec.describe 'As a visitor' do
       to change { User.count }.by(0)
 
       expect(current_path).to eq('/profile')
-      expect(page).to have_content("Hello, #{user.first_name}")
 
       expect(User.count).to eq(1)
 

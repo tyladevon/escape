@@ -1,17 +1,19 @@
-<%= form_tag( path, method: :get) do |f| %>
-  Select minimum difficulty: <br>
-  <%= select_tag(:min_diff, options_for_select(climb_diff)) %> <br>
-  Select maximum difficulty: <br>
-  <%= select_tag(:max_diff, options_for_select(climb_diff)) %> <br>
-  Select climb type: <br>
-  <%= check_box_tag(:trad, "Trad") %>
-  <%= label_tag(:type, "Trad") %>
-  <%= check_box_tag(:sport, "Sport") %>
-  <%= label_tag(:type, "Sport") %>
-  <br>
-  <%= label_tag :distance, "How far are you willing to travel from your destination?" %> <br>
-  <%= text_field_tag :distance %>
-  <br>
-  <p>(miles)</p>
-  <%= submit_tag "Find Climbs!", class: "button" %> 
-<% end %>
+<div class="search-forms">
+  <%= form_tag( path, method: :get) do |f| %>
+    Select minimum difficulty: <br>
+    <%= select_tag(:min_diff, options_for_select(climb_diff)) %> <br>
+    Select maximum difficulty: <br>
+    <%= select_tag(:max_diff, options_for_select(climb_diff)) %> <br>
+    Select climb type: <br>
+    <%= check_box_tag(:trad, "Trad") %>
+    <%= label_tag(:type, "Trad") %>
+    <%= check_box_tag(:sport, "Sport") %>
+    <%= label_tag(:type, "Sport") %>
+    <br>
+    <%= label_tag :distance, "How far are you willing to travel from your destination?" %> <br>
+    <%= text_field_tag :distance %>
+    <br>
+    <p>(miles)</p>
+    <%= submit_tag "Find Climbs!", class: "button" %> 
+  <% end %>
+</div>
