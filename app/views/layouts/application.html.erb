@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>EscapeApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,25 +15,39 @@
 
   <body>
     <nav>
-      <p>
-      <%= link_to(image_tag('logos/escape_nav.png', height: '60px', alt: 'Escape Logo', id: 'logo'), '/') %>
-      <% if current_user %>
-        <%= link_to("Hi, #{current_user.first_name}", '/profile') %>
-          <% if current_user.image %>
-            <%= link_to(image_tag(current_user.image, alt: "User's Google Potrait", class: 'user-potrait'), '/profile') %>
-          <% end %>
-      <% end %>
-      <%= link_to 'About', '/about' %>
-      <%= link_to 'Log Out', '/logout' if current_user %>
-      <%= link_to 'My Trips', '/profile' if current_user %>
-      </p>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md">
+            <%= link_to(image_tag('logos/escape_nav.png', height: '60px', alt: 'Escape Logo', id: 'logo'), '/') %>
+          </div>
+          <div class="col-md" id="nav-links">
+            <%= link_to 'About', '/about' %>
+            <%= link_to 'New Trip', '/search' if current_user %>
+            <%= link_to 'My Trips', '/profile' if current_user %>
+            <%= link_to 'Log Out', '/logout' if current_user %>
+            <% if current_user %>
+              <%= link_to("Hi, #{current_user.first_name}", '/profile') %>
+                <% if current_user.image %>
+                  <%= link_to(image_tag(current_user.image, alt: "User's Google Potrait", class: 'user-potrait'), '/profile') %>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <% flash.each do |name, msg| %>
-      <div class ="<%= name %>-flash">
-        <p class ="<%= name %>-flash"><%= msg %></p>
-      </div>
-    <% end %>
-    <%= yield %>
+    <div class="container-fluid">
+      <% flash.each do |name, msg| %>
+        <div class ="<%= name %>-flash">
+          <p class ="<%= name %>-flash"><%= msg %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>

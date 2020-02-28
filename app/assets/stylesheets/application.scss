@@ -21,7 +21,18 @@
 h1 {
   font-family: 'Caveat';
 }
-
+.search-label {
+  font-family: 'Caveat';
+}
+.search-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  width: 200px;
+}
+.search-activity {
+  word-spacing: 5px;
+}
 body {
   font-family: 'Barlow';
 }
@@ -69,11 +80,61 @@ nav {
 
 #map {
  width: 500px;
- height: 300px;
+ height: 400px;
+ margin-right: 75px;
+ margin-bottom: 50px;
 }
 
 .user-potrait {
   border-radius: 50%;
   height: 50px;
   width: 50px;
+}
+.container-fluid {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#nav-links {
+  font-size: 17px;
+  text-align: right;
+  padding: 5px;
+  a {
+    padding: 5px;
+  }
+}
+.search-forms {
+  form {
+    background-color:rgb(232, 246, 255);
+    line-height: 30px;
+    margin-top: 30px;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-bottom: 20px;
+    padding-top: 15px;
+    border-radius: 8px;
+
+    input[type=text], select {
+      width: 100px;
+      border-radius: 8px;
+      text-align-last:center;
+    }
+    input[type=number], select {
+      border-radius: 8px;
+      text-align-last:center;
+      width: 100px;
+    }
+  }
+}
+
+
+.trips {
+  .card {
+    margin: 10px;
+    width: 25%;
+    display: inline-block;
+    border-radius: 10px;
+    line-height: 10px;
+  }
 }
