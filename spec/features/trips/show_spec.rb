@@ -54,21 +54,24 @@ RSpec.describe 'As a logged in user' do
 
       within ".climbs" do
         within "#climb-#{climb_1.id}" do
-          expect(page).to have_link("#{climb_1.name}", href: climb_1.url)
+          expect(page).to have_content("#{climb_1.name}")
           expect(page).to have_content(climb_1.climb_type)
           expect(page).to have_content(climb_1.rating)
           expect(page).to have_content(climb_1.stars)
+          expect(page).to have_link("Link to additional route details", href: climb_1.url)
         end
 
         within ("#climb-#{climb_2.id}") do
-          expect(page).to have_link("#{climb_2.name}", href: climb_2.url)
+          expect(page).to have_content("#{climb_2.name}")
           expect(page).to have_content(climb_2.climb_type)
           expect(page).to have_content(climb_2.rating)
           expect(page).to have_content(climb_2.stars)
+          expect(page).to have_link("Link to additional route details", href: climb_2.url)
+
         end
         
-        expect(page).to_not have_link("#{climb_3.name}", href: climb_3.url)
-        expect(page).to_not have_link("#{climb_4.name}", href: climb_4.url)
+        expect(page).to_not have_link("Link to additional route details", href: climb_3.url)
+        expect(page).to_not have_link("Link to additional route details", href: climb_4.url)
       end
       expect(page).to have_css(".google-map")
       expect(page).to have_css("#map")
